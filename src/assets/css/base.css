@@ -5,12 +5,15 @@
     --primary-text-color: #f9f9f9;
     --secondary-text-color: #b9b9b9;
     --secondary-text-color-hover: #989898;
+    --additionary-text-color: #a9a9a9;
     --brand-blue-color: #0073d7;
+    --brand-blue-color-hover: #0059a7;
 
     --primary-font: Arial, Helvetica, sans-serif;
     --text-size: 14px;
     --heading-size: 20px;
     --text-weight: 400;
+    --line-height: 1.5;
 }
 
 /* === BASE === */
