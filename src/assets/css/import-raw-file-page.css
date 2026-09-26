@@ -1,0 +1,15 @@
+.import-raw-file-page .content-holder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.import-raw-file-page .content-holder #dd-file::file-selector-button {
+    background-color: var(--brand-blue-color);
+    color: var(--primary-text-color);
+    outline: none;
+    border: none;
+    display: block;
+    padding: 10px 50px;
+    border-radius: 5px;
+}
