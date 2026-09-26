@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <link rel="icon" href="#">
+  <link rel="stylesheet" href="./src/assets/css/base.css">
+  <link rel="stylesheet" href="./src/assets/css/sidebar.css">
+  <title>RottFiler</title>
+</head>
+
+<body>
+
+  <div class="dashboard-container">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <img src="./src/assets/logo.png" alt="Logo" class="logo">
+
+      <nav class="menu">
+        <ul>
+          <li>
+            <img src="./src/assets/disc.png" alt="Hard Disk Drive">
+            <a href="#" class="active">Import RAW File</a>
+          </li>
+          <li>
+            <img src="./src/assets/report.png" alt="Report Analytics">
+            <a href="#">Report Analytics</a>
+          </li>
+          <li>
+            <img src="./src/assets/folder.png" alt="Report Analytics">
+            <a href="#">Extracted Files</a>
+          </li>
+          <li>
+            <img src="./src/assets/database.png" alt="Processed">
+            <a href="#">Processed RAW File</a>
+          </li>
+          <li>
+            <img src="./src/assets/file.png" alt="File">
+            <a href="#">File Document</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- IMPORT RAW FILE PAGE -->
+    <div class="import-raw-file-page">
+      <h2>Import RAW file for investigation</h2>
+    </div>
+  </div>
+
+  <p id="ping"></p>
+</body>
+
+<!-- DEFAULT SCRIPT -->
+<script src="./src/script.js"></script>
+
+<!-- ELECTRON SCRIPT -->
+<!-- <script src="./src/renderer.js"></script> -->
+
+</html>
