@@ -1,7 +1,4 @@
 .import-raw-file-page .content-holder {
-    position: absolute;
-    top: 33%;
-    left: 45%;
     width: 406px;
     cursor: default;
 }
@@ -31,6 +28,10 @@
     color: var(--additionary-text-color);
     line-height: var(--line-height);
     margin-bottom: 20px;
+}
+
+.import-raw-file-page .content-holder #dd-file {
+    color: var(--brand-blue-color);
 }
 
 .import-raw-file-page .content-holder #dd-file::file-selector-button {
