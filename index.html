@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./src/ui/base.css">
   <link rel="stylesheet" href="./src/ui/sidebar.css">
   <link rel="stylesheet" href="./src/ui/import-raw-file-page.css">
+  <link rel="stylesheet" href="./src/ui/error-message.css">
   <title>RottFiler</title>
 </head>
 
@@ -21,7 +22,7 @@
 
       <nav class="menu">
         <ul>
-          <li>
+          <li class="render">
             <img src="./src/assets/disc.png" alt="Hard Disk Drive">
             <a href="#" class="active">Import RAW File</a>
           </li>
@@ -29,18 +30,18 @@
             <img src="./src/assets/database.png" alt="Processed">
             <a href="#">Open RAW File</a>
           </li>
-          <!-- <li>
+          <li class="remove">
             <img src="./src/assets/report.png" alt="Report Analytics">
             <a href="#">Report Analytics</a>
-          </li> -->
-          <!-- <li>
+          </li>
+          <li class="remove">
             <img src="./src/assets/folder.png" alt="Report Analytics">
             <a href="#">Extracted Files</a>
-          </li> -->
-          <!-- <li>
+          </li>
+          <li class="remove">
             <img src="./src/assets/file.png" alt="File">
             <a href="#">File Document</a>
-          </li> -->
+          </li>
         </ul>
       </nav>
     </div>
@@ -54,18 +55,15 @@
         </div>
         <p>When program finishes processing files charts, recovered files and all the important informations will be found in tabs Report Analytics and Extracted Files.</p>
         <p>Supported files: .dd, .raw, .001</p>
-        <input type="file" id="dd-file">
+        <input type="file" id="dd-file" >
       </div>
     </div>
   </div>
 
-  <p id="ping"></p>
+  <div id="error-message-toast">Please provide a file with valid extension</div>
 </body>
 
-<!-- DEFAULT SCRIPT -->
-<script src="./src/script.js"></script>
-
 <!-- ELECTRON SCRIPT -->
-<!-- <script src="./src/renderer.js"></script> -->
+<script src="./src/renderer.js"></script>
 
 </html>

@@ -20,6 +20,9 @@ const createWindow = () => {
 
 // === DESKTOP APP INITIALIZATION ===
 app.whenReady().then(() => {
-  ipcMain.handle('ping', () => 'pong');
   createWindow();
+
+  ipcMain.on('raw-file-input', (e, filepath) => {
+    console.log(`Filepath: ${filepath}`)
+  })
 });

@@ -1,0 +1,16 @@
+#error-message-toast {
+    position: absolute;
+    bottom: 80px;
+    right: 40px;
+    padding: 20px;
+    background-color: var(--primary-error-color);
+    border: 1px solid var(--secondary-error-color);
+    border-radius: 10px;
+    color: var(--primary-text-color);
+    cursor: default;
+    display: none;
+}
+
+#error-message-toast.display {
+    display: block;
+}

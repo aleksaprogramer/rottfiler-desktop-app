@@ -1,8 +1,8 @@
-const { contextBridge, ipcRenderer } = require('electron');
+const { contextBridge, ipcRenderer, webUtils } = require('electron');
 
-contextBridge.exposeInMainWorld('versions', {
-  node: () => process.versions.node,
-  chrome: () => process.versions.chrome,
-  electron: () => process.versions.electron,
-  ping: () => ipcRenderer.invoke('ping')
+contextBridge.exposeInMainWorld('electronAPI', {
+  sendFile: (file) => {
+    const filepath = webUtils.getPathForFile(file);
+    ipcRenderer.send('raw-file-input', filepath);
+  }
 });

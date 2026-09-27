@@ -23,6 +23,10 @@
     align-items: center;
 }
 
+.sidebar .menu ul .remove {
+    display: none;
+}
+
 .sidebar .menu ul li img {
     width: 20px;
     margin-right: 10px;
