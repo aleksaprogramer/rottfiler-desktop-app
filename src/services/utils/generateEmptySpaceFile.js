@@ -1,12 +1,77 @@
-const { execSync } = require(`child_process`);
+const { execSync, spawnSync } = require(`child_process`);
 const fs = require(`fs`);
 const path = require(`path`);
 
-// ALL IMPORTANT VARIABLES
-const TSK_BIN_FOLDER = `${path.join(process.cwd(), 'tsk', 'tsk', 'bin')}`;
+// IMPORTANT VARIABLES
+const TSK_BIN_FOLDER_PATH = String(path.join(process.cwd(), 'src', 'services', 'tsk', 'tsk', 'bin')); // bin folder
+const MMLS_EXE_PATH = String(path.join(TSK_BIN_FOLDER_PATH, 'mmls.exe')); // mmls.exe
+const BLKLS_EXE_PATH = String(path.join(TSK_BIN_FOLDER_PATH, 'blkls.exe')); // blkls.exe
 
-const generateEmptySpaceFile = () => {
+const generateEmptySpaceFile = (filepath) => {
+    let offset = 0;
+    let filesystem = '';
 
+    // MMLS EXECUTABLE
+    try {
+
+        console.log(`=== CURRENT DIRECTORY ===`);
+        console.log(process.cwd());
+        console.log(`=== CMD SCRIPT ===`);
+        console.log(`"${MMLS_EXE_PATH}" "${filepath}"`);
+
+        const mmlsOutput = execSync(`"${MMLS_EXE_PATH}" "${filepath}"`, {
+            stdio: 'pipe'
+        }).toString();
+
+        // const mmls = spawnSync(MMLS_EXE_PATH, [filepath], {
+        //     cwd: TSK_BIN_FOLDER_PATH
+        // });
+
+        // if (mmls.status !== 0) {
+        //     throw new Error(mmls.stderr.toString());
+        // }
+        
+        // const mmlsOutput = mmls.stdout.toString();
+
+        console.log(mmlsOutput);
+
+        // DETERMINING OFFSET SECTOR
+        if (mmlsOutput.includes("0000000063")) {
+            offset = 63;
+
+        } else if (mmlsOutput.includes("0000000128")) {
+            offset = 128;
+
+        } else if (mmlsOutput.includes("0000000032")) {
+            offset = 32;
+
+        } else if (mmlsOutput.includes("0000002048")) {
+            offset = 2048;
+        }
+
+        // DETERMINING FILE SYSTEM
+        if (mmlsOutput.includes("FAT32") || mmlsOutput.includes("Win95 FAT32")) {
+            filesystem = 'fat';
+
+        } else if (mmlsOutput.includes("NTFS")) {
+            filesystem = 'ntfs';
+        }
+
+        console.log(`Successful MMLS detection:`);
+        console.log(`Offset sector: ${offset}`);
+        console.log(`System: ${filesystem}`);
+
+    } catch (err) {
+        console.log(`MMLS have not detected partition table. Offset is set to 0 (raw partition)...`);
+        offset = 0;
+
+        if (err.stderr) {
+            console.log(err.stderr.toString());
+
+        } else {
+            console.log(err.message);
+        }
+    }
 };
 
 module.exports = generateEmptySpaceFile;

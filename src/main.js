@@ -1,6 +1,8 @@
 const path = require(`path`);
 const { app, BrowserWindow, ipcMain } = require('electron');
 
+const init = require(`./services/init.js`);
+
 // === DESKTOP APP WINDOW CONFIG ===
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -23,6 +25,6 @@ app.whenReady().then(() => {
   createWindow();
 
   ipcMain.on('raw-file-input', (e, filepath) => {
-    console.log(`Filepath: ${filepath}`)
+    init(filepath);
   })
 });
