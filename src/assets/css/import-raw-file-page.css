@@ -1,3 +1,10 @@
+.import-raw-file-page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .import-raw-file-page .content-holder {
     width: 406px;
     cursor: default;
