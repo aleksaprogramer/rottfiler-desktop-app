@@ -84,6 +84,11 @@ const generateEmptySpaceFile = (filepath) => {
         execSync(`"${BLKLS_EXE_PATH}" -f ${filesystem} -o ${offset} "${filepath}" > "${outputFile}"`);
 
         console.log(`Generated file: ${outputFile}`);
+        return {
+            outputFile: outputFile,
+            dateId: dateId,
+            filename: filename
+        };
         
     } catch (err) {
         console.log(`Error during the extraction of empty space from partition: ${err.message}`);
