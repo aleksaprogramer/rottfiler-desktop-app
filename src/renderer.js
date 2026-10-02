@@ -34,6 +34,10 @@ const sendInputedFile = (e) => {
 // EVENTS
 rawFileInput.addEventListener(`change`, sendInputedFile);
 
-window.electronAPI.onResponse(() => {
-  alert(data);
+window.electronAPI.onReportData((data) => {
+  console.log(`Report data has arrived on frontend`);
+
+  loadingScreen.classList.add(`non-active`);
+
+  alert(JSON.stringify(data, null, 2));
 })

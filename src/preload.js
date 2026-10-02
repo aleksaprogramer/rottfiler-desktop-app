@@ -7,7 +7,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.send('raw-file-input', filepath);
   },
 
-  onResponse: (callback) => {
-    ipcRenderer.on('backend-data', (e, data) => callback(data));
+  onReportData: (callback) => {
+    ipcRenderer.on(`report-data`, (e, data) => callback(data));
   }
 });

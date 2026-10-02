@@ -17,17 +17,14 @@ const createWindow = () => {
   win.setMenu(null);
 
   win.loadFile('index.html');
-  return win;
 };
 
 // === DESKTOP APP INITIALIZATION ===
 app.whenReady().then(() => {
-  const win = createWindow();
+  createWindow();
 
-  ipcMain.on('raw-file-input', (e, filepath) => {
-    const data = init(filepath);
-    win.webContents.on(data, () => {
-      win.webContents.send('backend-data', data);
-    })
+  ipcMain.on('raw-file-input', async (e, filepath) => {
+    const data = await init(filepath);
+    e.sender.send(`report-data`, data);
   })
 });

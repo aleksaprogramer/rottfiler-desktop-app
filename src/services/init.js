@@ -11,7 +11,7 @@ const init = async (filepath) => {
 
     console.log(`=== DATA ===`);
     console.log(data);
-    // return data;
+    return data;
 }
 
 module.exports = init;
