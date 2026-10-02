@@ -2,23 +2,15 @@ const generateEmptySpaceFile = require(`./utils/generateEmptySpaceFile.js`);
 const generateReport = require(`./utils/generateReport.js`);
 const getReportData = require(`./utils/getReportData.js`);
 
-const init = (filepath) => {
+const init = async (filepath) => {
     const { outputFile, dateId, filename } = generateEmptySpaceFile(filepath);
 
-    // console.log(`=== outputFile ===`);
-    console.log({
-        outputFile: outputFile,
-        dateId: dateId,
-        filename: filename
-    })
+    await generateReport(outputFile, dateId, filename);
 
-    generateReport(outputFile, dateId, filename);
+    const data = getReportData(dateId, filename);
 
-    // const data = getReportData(reportFile);
-
-    // console.log(`=== DATA ===`);
-    // console.log(data);
-
+    console.log(`=== DATA ===`);
+    console.log(data);
     // return data;
 }
 

@@ -1,7 +1,9 @@
 const fs = require(`fs`);
+const path = require(`path`);
 
-const getReportData = (reportFile, dateId, filename) => {
-    const jsonData = fs.readFileSync(`../../../data/case_${dateId}-${filename}/report_${filename}.json`);
+const getReportData = (dateId, filename) => {
+    const reportFile = path.join(process.cwd(), 'data', `case_${dateId}-${filename}`, `report_${filename}.json`);
+    const jsonData = fs.readFileSync(reportFile);
     const data = JSON.parse(jsonData);
     return data;
 };
