@@ -3,6 +3,7 @@
 // VARIABLES
 const rawFileInput = document.getElementById(`dd-file`);
 const errorMessageToast = document.getElementById(`error-message-toast`);
+const loadingScreen = document.getElementById(`loading-screen`);
 
 // FUNCTIONS
 const sendInputedFile = (e) => {
@@ -26,8 +27,13 @@ const sendInputedFile = (e) => {
   }
 
   errorMessageToast.classList.remove(`display`);
+  loadingScreen.classList.remove(`non-active`);
   window.electronAPI.sendFile(file);
 }
 
 // EVENTS
 rawFileInput.addEventListener(`change`, sendInputedFile);
+
+window.electronAPI.onResponse(() => {
+  alert(data);
+})

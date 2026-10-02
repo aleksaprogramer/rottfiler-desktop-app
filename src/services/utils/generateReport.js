@@ -81,9 +81,11 @@ const genereateReport = (outputFile, dateId, filename) => {
             density_map: densityMap
         };
 
-        const reportFile = path.join(process.cwd(), 'data', 'case', `case_${dateId}-${filename}`, `report_${filename}.json`);
+        const reportFile = path.join(process.cwd(), 'data', `case_${dateId}-${filename}`, `report_${filename}.json`);
 
         fs.writeFileSync(reportFile, JSON.stringify(forensicsReport, null, 2));
+
+        console.log(`File successfully created at path: ${reportFile}`);
 
         console.log(`${outputFile} file successfully processed and analyzed.`);
     });
