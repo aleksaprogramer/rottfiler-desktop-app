@@ -5,3 +5,10 @@
 .report-page.render {
     display: block;
 }
+
+.report-page .conent-wrapper .report-container .percentages-graph-frame {
+    width: 320px;
+    height: 320px;
+    margin: 20px auto;
+    position: relative;
+}
