@@ -4,6 +4,9 @@
 const rawFileInput = document.getElementById(`dd-file`);
 const errorMessageToast = document.getElementById(`error-message-toast`);
 const loadingScreen = document.getElementById(`loading-screen`);
+const importRawFilePage = document.getElementById(`import-raw-file-page`);
+const reportPage = document.getElementById(`report-page`);
+const reportContainer = document.getElementById(`report-container`);
 
 // FUNCTIONS
 const sendInputedFile = (e) => {
@@ -38,6 +41,11 @@ window.electronAPI.onReportData((data) => {
   console.log(`Report data has arrived on frontend`);
 
   loadingScreen.classList.add(`non-active`);
+  importRawFilePage.classList.remove(`render`);
+  reportPage.classList.add(`render`);
 
-  alert(JSON.stringify(data, null, 2));
+  const html = `<p>Zeros Percentage: ${data.percentages.zeros_percentage}</p>
+  <p>Data Percentage: ${data.percentages.data_percentage}</p>`;
+
+  reportContainer.insertAdjacentHTML("afterbegin", html);
 })

@@ -1,4 +1,9 @@
 .import-raw-file-page {
+    display: none;
+}
+
+.import-raw-file-page.render {
+    display: block;
     width: 100%;
     display: flex;
     justify-content: center;

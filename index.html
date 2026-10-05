@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./src/ui/css/base.css">
   <link rel="stylesheet" href="./src/ui/css/sidebar.css">
   <link rel="stylesheet" href="./src/ui/css/import-raw-file-page.css">
+  <link rel="stylesheet" href="./src/ui/css/report-page.css">
   <link rel="stylesheet" href="./src/ui/css/error-message.css">
   <link rel="stylesheet" href="./src/ui/css/loading.screen.css">
   <title>RottFiler</title>
@@ -48,21 +49,32 @@
     </div>
 
     <!-- IMPORT RAW FILE PAGE -->
-    <div class="import-raw-file-page">
+    <div class="import-raw-file-page render" id="import-raw-file-page">
       <div class="content-holder">
         <h2>Import RAW file for investigation</h2>
         <div class="icon-holder">
           <img src="./src/assets/disc.png" alt="Disk" class="icon">
         </div>
-        <p>When program finishes processing files charts, recovered files and all the important informations will be found in tabs Report Analytics and Extracted Files.</p>
+        <p>When program finishes processing files charts, recovered files and all the important informations will be
+          found in tabs Report Analytics and Extracted Files.</p>
         <p>Supported files: .dd, .raw, .001</p>
-        <input type="file" id="dd-file" >
+        <input type="file" id="dd-file">
+      </div>
+    </div>
+
+    <!-- REPORT PAGE -->
+    <div class="report-page" id="report-page">
+      <div class="conent-wrapper">
+        <h2>Report</h2>
+        <div id="report-container"></div>
       </div>
     </div>
   </div>
 
+  <!-- ERROR MESSAGE TOAST -->
   <div id="error-message-toast">Please provide a file with valid extension</div>
 
+  <!-- LOADING SCREEN -->
   <div class="loading-screen non-active" id="loading-screen">
     <div class="text-holder">
       <p>Please wait. Processing files...</p>

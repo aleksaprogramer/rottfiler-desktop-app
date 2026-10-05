@@ -1,0 +1,7 @@
+.report-page {
+    display: none;
+}
+
+.report-page.render {
+    display: block;
+}
