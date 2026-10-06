@@ -1,14 +1,28 @@
 "use strict";
 
 // VARIABLES
+// Frame
 const minimizeBtn = document.getElementById(`minimize-btn`);
 const closeBtn = document.getElementById(`close-btn`);
+
+// Pages
+const importRawFilePage = document.getElementById(`import-raw-file-page`);
+const reportPage = document.getElementById(`report-page`);
+
+// Links
+const importRawFileListItem = document.getElementById(`import-raw-file-li`);
+const reportAnalyticsListItem = document.getElementById(`report-analytics-li`);
+const extractedFilesListItem = document.getElementById(`extracted-files-li`);
+const importRawFileLink = document.getElementById(`import-raw-file-link`);
+const reportAnalyticsLink = document.getElementById(`report-analytics-link`);
+const extractedFilesLink = document.getElementById(`extracted-files-link`);
+
 const rawFileInput = document.getElementById(`dd-file`);
 const errorMessageToast = document.getElementById(`error-message-toast`);
 const loadingScreen = document.getElementById(`loading-screen`);
-const importRawFilePage = document.getElementById(`import-raw-file-page`);
-const reportPage = document.getElementById(`report-page`);
 const reportContainer = document.getElementById(`report-container`);
+
+
 
 // FUNCTIONS
 const sendInputedFile = (e) => {
@@ -89,6 +103,8 @@ const drawPercentagesGraph = (zeroPercentage, dataPercentage) => {
   });
 }
 
+
+
 // EVENTS
 minimizeBtn.addEventListener(`click`, () => {
   window.electronAPI.minimizeWindow();
@@ -106,6 +122,11 @@ window.electronAPI.onReportData((data) => {
   loadingScreen.classList.add(`non-active`);
   importRawFilePage.classList.remove(`render`);
   reportPage.classList.add(`render`);
+  
+  importRawFileListItem.classList.add(`non-active`);
+  reportAnalyticsListItem.classList.remove(`non-active`);
+  extractedFilesListItem.classList.remove(`non-active`);
+  reportAnalyticsLink.classList.add(`active`);
 
   const html = `<p>Zeros Percentage: ${data.percentages.zeros_percentage}</p>
   <p>Data Percentage: ${data.percentages.data_percentage}</p>`;
