@@ -1,6 +1,8 @@
 "use strict";
 
 // VARIABLES
+const minimizeBtn = document.getElementById(`minimize-btn`);
+const closeBtn = document.getElementById(`close-btn`);
 const rawFileInput = document.getElementById(`dd-file`);
 const errorMessageToast = document.getElementById(`error-message-toast`);
 const loadingScreen = document.getElementById(`loading-screen`);
@@ -88,6 +90,14 @@ const drawPercentagesGraph = (zeroPercentage, dataPercentage) => {
 }
 
 // EVENTS
+minimizeBtn.addEventListener(`click`, () => {
+  window.electronAPI.minimizeWindow();
+})
+
+closeBtn.addEventListener(`click`, () => {
+  window.electronAPI.closeWindow();
+})
+
 rawFileInput.addEventListener(`change`, sendInputedFile);
 
 window.electronAPI.onReportData((data) => {

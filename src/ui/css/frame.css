@@ -1,0 +1,48 @@
+.frame {
+    background-color: var(--frame-bg-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-app-region: drag;
+}
+
+.frame .favicon {
+    width: 20px;
+}
+
+.frame .btns-holder {
+    display: flex;
+}
+
+.frame .btns-holder .btn {
+    outline: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 45px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: var(--primary-text-color);
+}
+
+.frame .btns-holder .minimize-btn, .close-btn {
+    -webkit-app-region: no-drag;
+}
+
+.frame .btns-holder .minimize-btn {
+    background-color: var(--frame-minimize-btn-color);
+    transition: 0.2s;
+}
+
+.frame .btns-holder .minimize-btn:hover {
+    background-color: var(--frame-minimize-btn-color-hover);
+}
+
+.frame .btns-holder .close-btn {
+    background-color: var(--frame-close-btn-color);
+    transition: 0.2s;
+}
+
+.frame .btns-holder .close-btn:hover {
+    background-color: var(--frame-close-btn-color-hover);
+}

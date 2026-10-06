@@ -7,15 +7,24 @@
   <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
   <link rel="icon" href="#">
   <link rel="stylesheet" href="./src/ui/css/base.css">
+  <link rel="stylesheet" href="./src/ui/css/frame.css">
   <link rel="stylesheet" href="./src/ui/css/sidebar.css">
   <link rel="stylesheet" href="./src/ui/css/import-raw-file-page.css">
   <link rel="stylesheet" href="./src/ui/css/report-page.css">
   <link rel="stylesheet" href="./src/ui/css/error-message.css">
   <link rel="stylesheet" href="./src/ui/css/loading.screen.css">
-  <title>RottFiler</title>
+  <title>Disc Forensics Tool</title>
 </head>
 
 <body>
+
+  <div class="frame">
+    <img src="./public/favicon.png" alt="DFIR" class="favicon">
+    <div class="btns-holder">
+      <button id="minimize-btn" class="btn minimize-btn">_</button>
+      <button id="close-btn" class="btn close-btn">x</button>
+    </div>
+  </div>
 
   <div class="dashboard-container">
     <!-- SIDEBAR -->

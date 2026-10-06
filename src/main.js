@@ -7,6 +7,7 @@ const createWindow = () => {
   const win = new BrowserWindow({
     minWidth: 1200,
     minHeight: 800,
+    frame: false,
     icon: path.join(__dirname, '..', 'public', 'favicon.png'),
     webPreferences: {
       preload: path.join(__dirname, `preload.js`)
@@ -17,11 +18,20 @@ const createWindow = () => {
   win.setMenu(null);
 
   win.loadFile('index.html');
+  return win;
 };
 
 // === DESKTOP APP INITIALIZATION ===
 app.whenReady().then(() => {
-  createWindow();
+  const win = createWindow();
+
+  ipcMain.on('minimize-window', () => {
+    if (win) win.minimize();
+  });
+
+  ipcMain.on('close-window', () => {
+    if (win) win.close();
+  });
 
   ipcMain.on('raw-file-input', async (e, filepath) => {
     const data = await init(filepath);

@@ -2,6 +2,10 @@ const { contextBridge, ipcRenderer, webUtils } = require('electron');
 
 contextBridge.exposeInMainWorld('electronAPI', {
 
+  minimizeWindow: () => ipcRenderer.send('minimize-window'),
+
+  closeWindow: () => ipcRenderer.send('close-window'),
+
   sendFile: (file) => {
     const filepath = webUtils.getPathForFile(file);
     ipcRenderer.send('raw-file-input', filepath);
