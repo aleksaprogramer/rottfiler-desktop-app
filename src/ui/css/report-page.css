@@ -4,11 +4,85 @@
 
 .report-page.render {
     display: block;
+    width: 100%;
+    cursor: default;
+    overflow: auto;
 }
 
-.report-page .conent-wrapper .report-container .percentages-graph-frame {
-    width: 320px;
-    height: 320px;
-    margin: 20px auto;
+.report-page .content-holder {
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.report-page .content-holder h2 {
+    color: var(--secondary-text-color);
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+.report-page .content-holder #report-container .empty-file-info {
+    background-color: var(--brand-blue-color);
+    padding: 25px;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.report-page .content-holder #report-container .empty-file-info .heading-holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.report-page .content-holder #report-container .empty-file-info .heading-holder h3 {
+    font-size: 22px;
+}
+
+.report-page .content-holder #report-container .empty-file-info .heading-holder img {
+    width: 35px;
+}
+
+.report-page .content-holder #report-container .empty-file-info .text {
+    line-height: 2;
+}
+
+.report-page .content-holder #report-container .empty-file-info .text p {
+    font-size: 15px;
+}
+
+.report-page .content-holder #report-container .empty-file-info .text p span {
+    font-weight: 700;
+}
+
+.report-page .content-holder #report-container .graphs {
+    background-color: var(--graph-bg-color);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.report-page .content-holder #report-container .graphs .percentages-graph-frame {
+    width: 270px;
+    height: 270px;
     position: relative;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--primary-bg-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--brand-blue-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--brand-blue-color-hover);
 }

@@ -57,6 +57,7 @@
       </nav>
     </div>
 
+    <!-- PAGES -->
     <!-- IMPORT RAW FILE PAGE -->
     <div class="import-raw-file-page render" id="import-raw-file-page">
       <div class="content-holder">
@@ -73,11 +74,14 @@
 
     <!-- REPORT PAGE -->
     <div class="report-page" id="report-page">
-      <div class="conent-wrapper">
+      <div class="content-holder">
         <h2>Report</h2>
         <div id="report-container">
-          <div class="percentages-graph-frame">
-            <canvas id="percentages-graph"></canvas>
+          
+          <div class="graphs">
+            <div class="percentages-graph-frame">
+              <canvas id="percentages-graph"></canvas>
+            </div>
           </div>
         </div>
       </div>
@@ -85,7 +89,9 @@
   </div>
 
   <!-- ERROR MESSAGE TOAST -->
-  <div id="error-message-toast">Please provide a file with valid extension</div>
+  <div id="error-message-toast">
+    <p>Please provide a file with valid extension</p>
+  </div>
 
   <!-- LOADING SCREEN -->
   <div class="loading-screen non-active" id="loading-screen">
