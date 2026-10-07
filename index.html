@@ -34,15 +34,15 @@
 
       <nav class="menu">
         <ul>
-          <li id="import-raw-file-li" class="non-active">
+          <li id="import-raw-file-li">
             <img src="./src/assets/disc.png" alt="Hard Disc Drive">
             <a id="import-raw-file-link" href="#" class="active">Import RAW File</a>
           </li>
-          <li id="report-analytics-li">
+          <li id="report-analytics-li" class="non-active">
             <img src="./src/assets/report.png" alt="Report Analytics">
-            <a id="report-analytics-link" href="#" class="active">Report Analytics</a>
+            <a id="report-analytics-link" href="#">Report Analytics</a>
           </li>
-          <li id="extracted-files-li">
+          <li id="extracted-files-li" class="non-active">
             <img src="./src/assets/folder.png" alt="Recovered Files">
             <a id="extracted-files-link" href="#">Recovered Files</a>
           </li>
@@ -52,21 +52,21 @@
 
     <!-- PAGES -->
     <!-- IMPORT RAW FILE PAGE -->
-    <div class="import-raw-file-page" id="import-raw-file-page">
+    <div class="import-raw-file-page render" id="import-raw-file-page">
       <div class="content-holder">
         <h2>Import RAW file for investigation</h2>
         <div class="icon-holder">
           <img src="./src/assets/disc.png" alt="Disk" class="icon">
         </div>
         <p>When program finishes processing files charts, recovered files and all the important informations will be
-          found in tabs Report Analytics and Extracted Files.</p>
+          found in tabs: Report Analytics and Recovered Files.</p>
         <p>Supported files: .dd, .raw, .001</p>
         <input type="file" id="dd-file">
       </div>
     </div>
 
     <!-- REPORT PAGE -->
-    <div class="report-page render" id="report-page">
+    <div class="report-page" id="report-page">
       <div class="content-holder">
         <h2>Report</h2>
         <div id="report-container">
@@ -84,7 +84,8 @@
     <div class="recovered-files-page" id="recovered-files-page">
       <div class="content-holder">
         <h2>Recovered Files</h2>
-        <div class="recovered-files-container"></div>
+        <p class="loading-message">Recovering files. This could take few minutes</p>
+        <div id="recovered-files-container"></div>
       </div>
     </div>
   </div>

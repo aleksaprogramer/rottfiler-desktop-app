@@ -35,6 +35,7 @@ const loadingScreen = document.getElementById(`loading-screen`);
 
 // CONTAINERS
 const reportContainer = document.getElementById(`report-container`);
+const recoveredFilesContainer = document.getElementById(`recovered-files-container`);
 
 
 
@@ -73,6 +74,11 @@ window.electronAPI.onReportData((data) => {
 
   // STARTING FILE RECOVERING
   window.electronAPI.recoverFiles(data.processed_file, data.date_id, data.filename);
+})
+
+// RECEIVING RECOVERED FILES DATA
+window.electronAPI.onRecoveredFiles((data) => {
+  alert(JSON.parse(data));
 })
 
 // CHANGING PAGES ON CLICK (Report Analytics > Recovered Files)
