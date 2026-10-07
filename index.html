@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="./src/ui/css/sidebar.css">
   <link rel="stylesheet" href="./src/ui/css/import-raw-file-page.css">
   <link rel="stylesheet" href="./src/ui/css/report-page.css">
+  <link rel="stylesheet" href="./src/ui/css/recovered-files-page.css">
   <link rel="stylesheet" href="./src/ui/css/error-message.css">
   <link rel="stylesheet" href="./src/ui/css/loading.screen.css">
   <title>Disc Forensics Tool</title>
@@ -33,25 +34,17 @@
 
       <nav class="menu">
         <ul>
-          <li id="import-raw-file-li">
-            <img src="./src/assets/disc.png" alt="Hard Disk Drive">
+          <li id="import-raw-file-li" class="non-active">
+            <img src="./src/assets/disc.png" alt="Hard Disc Drive">
             <a id="import-raw-file-link" href="#" class="active">Import RAW File</a>
           </li>
-          <li id="open-raw-file-li" class="non-active">
-            <img src="./src/assets/database.png" alt="Processed">
-            <a href="#">Open RAW File</a>
-          </li>
-          <li id="report-analytics-li" class="non-active">
+          <li id="report-analytics-li">
             <img src="./src/assets/report.png" alt="Report Analytics">
-            <a id="report-analytics-link" href="#">Report Analytics</a>
+            <a id="report-analytics-link" href="#" class="active">Report Analytics</a>
           </li>
-          <li id="extracted-files-li" class="non-active">
-            <img src="./src/assets/folder.png" alt="Report Analytics">
-            <a id="extracted-files-link" href="#">Extracted Files</a>
-          </li>
-          <li id="file-document-li" class="non-active">
-            <img src="./src/assets/file.png" alt="File">
-            <a href="#">File Document</a>
+          <li id="extracted-files-li">
+            <img src="./src/assets/folder.png" alt="Recovered Files">
+            <a id="extracted-files-link" href="#">Recovered Files</a>
           </li>
         </ul>
       </nav>
@@ -59,7 +52,7 @@
 
     <!-- PAGES -->
     <!-- IMPORT RAW FILE PAGE -->
-    <div class="import-raw-file-page render" id="import-raw-file-page">
+    <div class="import-raw-file-page" id="import-raw-file-page">
       <div class="content-holder">
         <h2>Import RAW file for investigation</h2>
         <div class="icon-holder">
@@ -73,7 +66,7 @@
     </div>
 
     <!-- REPORT PAGE -->
-    <div class="report-page" id="report-page">
+    <div class="report-page render" id="report-page">
       <div class="content-holder">
         <h2>Report</h2>
         <div id="report-container">
@@ -84,6 +77,14 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- RECOVERED FILES PAGE -->
+    <div class="recovered-files-page" id="recovered-files-page">
+      <div class="content-holder">
+        <h2>Recovered Files</h2>
+        <div class="recovered-files-container"></div>
       </div>
     </div>
   </div>

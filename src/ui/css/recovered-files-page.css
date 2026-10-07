@@ -1,0 +1,10 @@
+.recovered-files-page {
+    display: none;
+}
+
+.recovered-files-page.render {
+    display: block;
+    width: 100%;
+    cursor: default;
+    overflow: auto;
+}

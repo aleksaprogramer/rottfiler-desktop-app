@@ -12,6 +12,7 @@ const closeBtn = document.getElementById(`close-btn`);
 // PAGES
 const importRawFilePage = document.getElementById(`import-raw-file-page`);
 const reportPage = document.getElementById(`report-page`);
+const recoveredFilesPage = document.getElementById(`recovered-files-page`);
 
 // LINKS
 // List items
@@ -72,4 +73,20 @@ window.electronAPI.onReportData((data) => {
 
   // STARTING FILE RECOVERING
   window.electronAPI.recoverFiles(data.processed_file, data.date_id, data.filename);
+})
+
+// CHANGING PAGES ON CLICK (Report Analytics > Recovered Files)
+extractedFilesLink.addEventListener(`click`, (e) => {
+  reportAnalyticsLink.classList.remove(`active`);
+  extractedFilesLink.classList.add(`active`);
+  reportPage.classList.remove(`render`);
+  recoveredFilesPage.classList.add(`render`);
+});
+
+// CHANGING PAGES ON CLICK (Recovered Files > Report Analytics)
+reportAnalyticsLink.addEventListener(`click`, (e) => {
+  extractedFilesLink.classList.remove(`active`);
+  reportAnalyticsLink.classList.add(`active`);
+  recoveredFilesPage.classList.remove(`render`);
+  reportPage.classList.add(`render`);
 })
