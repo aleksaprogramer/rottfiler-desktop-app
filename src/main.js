@@ -25,14 +25,17 @@ const createWindow = () => {
 app.whenReady().then(() => {
   const win = createWindow();
 
+  // MINIMIZING APP WINDOW
   ipcMain.on('minimize-window', () => {
     if (win) win.minimize();
   });
 
+  // CLOSING APP WINDOW
   ipcMain.on('close-window', () => {
     if (win) win.close();
   });
 
+  // SENDING RAW FILE FOR PROCESSING AND RETURNING BACK DATA TO preload.js
   ipcMain.on('raw-file-input', async (e, filepath) => {
     const data = await init(filepath);
     e.sender.send(`report-data`, data);
