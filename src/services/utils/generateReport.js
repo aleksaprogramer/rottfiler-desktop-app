@@ -70,6 +70,8 @@ const genereateReport = (outputFile, dateId, filename) => {
 
             const forensicsReport = {
                 processed_file: outputFile,
+                date_id: dateId,
+                filename: filename,
                 total_size_of_empty_space_in_MB: parseFloat(totalBytesInMB),
                 bytes_statistic: {
                     total_bytes: totalBytes,

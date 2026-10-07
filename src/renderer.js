@@ -39,22 +39,22 @@ const reportContainer = document.getElementById(`report-container`);
 
 // EVENTS
 
-// Minimizing app window
+// MINIMIZING APP WINDOW
 minimizeBtn.addEventListener(`click`, () => {
   window.electronAPI.minimizeWindow();
 })
 
-// Closing app window
+// CLOSING APP WINDOW
 closeBtn.addEventListener(`click`, () => {
   window.electronAPI.closeWindow();
 })
 
-// Sending inputted RAW file to preload.js
+// SENDING INPUTTED RAW FILE TO preload.js
 rawFileInput.addEventListener(`change`, (e) => {
   sendInputtedFile(e, errorMessageToast, loadingScreen);
 });
 
-// Displaying report on electronAPI response
+// DISPLAYING REPORT ON electronAPI RESPONSE
 window.electronAPI.onReportData((data) => {
   loadingScreen.classList.add(`non-active`);
   importRawFilePage.classList.remove(`render`);
@@ -69,4 +69,7 @@ window.electronAPI.onReportData((data) => {
 
   reportContainer.insertAdjacentHTML("afterbegin", html);
   drawPercentagesGraph(data.percentages.zeros_percentage, data.percentages.data_percentage);
+
+  // STARTING FILE RECOVERING
+  window.electronAPI.recoverFiles(data.processed_file, data.date_id, data.filename);
 })

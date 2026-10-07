@@ -18,5 +18,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
   // SENDING REPORT DATA TO renderer.js
   onReportData: (callback) => {
     ipcRenderer.on(`report-data`, (e, data) => callback(data));
+  },
+
+  // STARTING FILE RECOVERING
+  recoverFiles: (filepath, dateId, filename) => {
+    ipcRenderer.send('recover-files', filepath, dateId, filename);
   }
 });

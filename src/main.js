@@ -1,6 +1,7 @@
 const path = require(`path`);
 const { app, BrowserWindow, ipcMain } = require('electron');
 const init = require(`./services/init.js`);
+const startCarvingEngine = require(`./services/startCarvingEngine.js`);
 
 // === DESKTOP APP WINDOW CONFIG ===
 const createWindow = () => {
@@ -39,5 +40,10 @@ app.whenReady().then(() => {
   ipcMain.on('raw-file-input', async (e, filepath) => {
     const data = await init(filepath);
     e.sender.send(`report-data`, data);
+  })
+
+  // STARTING FILE RECOVERING
+  ipcMain.on('recover-files', async (e, filepath, dateId, filename) => {
+    await startCarvingEngine(filepath, dateId, filename);
   })
 });
