@@ -11,16 +11,19 @@ const closeBtn = document.getElementById(`close-btn`);
 
 // PAGES
 const importRawFilePage = document.getElementById(`import-raw-file-page`);
+const openFolderPage = document.getElementById(`open-folder-page`);
 const reportPage = document.getElementById(`report-page`);
 const recoveredFilesPage = document.getElementById(`recovered-files-page`);
 
 // LINKS
 // List items
 const importRawFileListItem = document.getElementById(`import-raw-file-li`);
+const openFolderListItem = document.getElementById(`open-folder-li`);
 const reportAnalyticsListItem = document.getElementById(`report-analytics-li`);
 const extractedFilesListItem = document.getElementById(`extracted-files-li`);
 // Anchor tag links
 const importRawFileLink = document.getElementById(`import-raw-file-link`);
+const openFolderLink = document.getElementById(`open-folder-link`);
 const reportAnalyticsLink = document.getElementById(`report-analytics-link`);
 const extractedFilesLink = document.getElementById(`extracted-files-link`);
 
@@ -64,6 +67,7 @@ window.electronAPI.onReportData((data) => {
   reportPage.classList.add(`render`);
 
   importRawFileListItem.classList.add(`non-active`);
+  openFolderListItem.classList.add(`non-active`);
   reportAnalyticsListItem.classList.remove(`non-active`);
   extractedFilesListItem.classList.remove(`non-active`);
   reportAnalyticsLink.classList.add(`active`);
@@ -86,10 +90,26 @@ window.electronAPI.onRecoveredFiles((data) => {
     <p>Name: ${file.name}</p>
     <p>Type: ${file.type}</p>
     <p>Filepath: ${file.path}</p>
-    `
+    `;
 
     recoveredFilesContainer.insertAdjacentHTML("beforeend", html);
   })
+})
+
+// CHANGING PAGES ON CLICK (Import RAW File > Open Folder)
+openFolderLink.addEventListener(`click`, (e) => {
+  importRawFileLink.classList.remove(`active`);
+  openFolderLink.classList.add(`active`);
+  importRawFilePage.classList.remove(`render`);
+  openFolderPage.classList.add(`render`);
+})
+
+// CHANGING PAGES ON CLICK (Open Folder > Import RAW File)
+importRawFileLink.addEventListener(`click`, (e) => {
+  openFolderLink.classList.remove(`active`);
+  importRawFileLink.classList.add(`active`);
+  openFolderPage.classList.remove(`render`);
+  importRawFilePage.classList.add(`render`);
 })
 
 // CHANGING PAGES ON CLICK (Report Analytics > Recovered Files)

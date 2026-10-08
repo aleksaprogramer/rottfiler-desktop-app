@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="./src/ui/css/frame.css">
   <link rel="stylesheet" href="./src/ui/css/sidebar.css">
   <link rel="stylesheet" href="./src/ui/css/import-raw-file-page.css">
+  <link rel="stylesheet" href="./src/ui/css/open-folder-page.css">
   <link rel="stylesheet" href="./src/ui/css/report-page.css">
   <link rel="stylesheet" href="./src/ui/css/recovered-files-page.css">
   <link rel="stylesheet" href="./src/ui/css/error-message.css">
@@ -38,6 +39,10 @@
             <img src="./src/assets/disc.png" alt="Hard Disc Drive">
             <a id="import-raw-file-link" href="#" class="active">Import RAW File</a>
           </li>
+          <li id="open-folder-li">
+            <img src="./src/assets/folder.png" alt="Folder">
+            <a id="open-folder-link" href="#">Open Folder</a>
+          </li>
           <li id="report-analytics-li" class="non-active">
             <img src="./src/assets/report.png" alt="Report Analytics">
             <a id="report-analytics-link" href="#">Report Analytics</a>
@@ -56,12 +61,24 @@
       <div class="content-holder">
         <h2>Import RAW file for investigation</h2>
         <div class="icon-holder">
-          <img src="./src/assets/disc.png" alt="Disk" class="icon">
+          <img src="./src/assets/disc.png" alt="Disc" class="icon">
         </div>
-        <p>When program finishes processing files charts, recovered files and all the important informations will be
+        <p>When program finishes processing files charts and recovered files, all the important informations will be
           found in tabs: Report Analytics and Recovered Files.</p>
         <p>Supported files: .dd, .raw, .001</p>
         <input type="file" id="dd-file">
+      </div>
+    </div>
+
+    <!-- OPEN FOLDER PAGE -->
+    <div class="open-folder-page" id="open-folder-page">
+      <div class="content-holder">
+        <h2>Open folder with already processed results from given RAW file</h2>
+        <div class="icon-holder">
+          <img src="./src/assets/folder.png" alt="Folder" class="icon">
+        </div>
+        <p>Open a folder that start, for example, with: case_2026-10-08_19-16-18-usb-drive.001</p>
+        <input type="file" id="folder">
       </div>
     </div>
 
