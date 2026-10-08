@@ -34,5 +34,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
   sendFileFromFolder: (file) => {
     const filepath = webUtils.getPathForFile(file);
     ipcRenderer.send('folder-file-input', filepath);
+  },
+
+  // SENDING FOLDER DATA TO renderer.js
+  onFolderData: (callback) => {
+    ipcRenderer.on('folder-data', (e, data) => callback(data));
   }
 });

@@ -63,10 +63,14 @@ app.whenReady().then(() => {
       const filename = match[2];
 
       const reportData = getReportData(dateId, filename);
-      console.log(reportData);
-
       const recoveredFiles = getRecoveredFiles(dateId, filename);
-      console.log(recoveredFiles);
+
+      const data = {
+        reportData: reportData,
+        recoveredFiles: recoveredFiles
+      };
+
+      e.sender.send('folder-data', data);
 
     } else {
       console.log(`Error: Invalid input`);

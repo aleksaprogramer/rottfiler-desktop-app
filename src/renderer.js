@@ -101,6 +101,7 @@ window.electronAPI.onRecoveredFiles((data) => {
 
 // OPENING FOLDER OF PROCESSED DATA
 folderInput.addEventListener(`change`, (e) => {
+  loadingScreen.classList.remove(`non-active`);
   const filesFromInput = e.target.files;
 
   if (filesFromInput.length <= 0) {
@@ -111,8 +112,29 @@ folderInput.addEventListener(`change`, (e) => {
 
   const file = event.target.files[0];
   
+  errorMessageToast.classList.remove(`display`);
   window.electronAPI.sendFileFromFolder(file);
-})
+});
+
+// RECEIVING FOLDER DATA
+window.electronAPI.onFolderData((data) => {
+  loadingScreen.classList.add(`non-active`);
+  openFolderPage.classList.remove(`render`);
+  reportPage.classList.add(`render`);
+
+  importRawFileListItem.classList.add(`non-active`);
+  openFolderListItem.classList.add(`non-active`);
+  reportAnalyticsListItem.classList.remove(`non-active`);
+  extractedFilesListItem.classList.remove(`non-active`);
+  reportAnalyticsLink.classList.add(`active`);
+
+  const { reportData, recoveredFiles } = data;
+
+  const html = generateBasicInfo(reportData);
+
+  reportContainer.insertAdjacentHTML("afterbegin", html);
+  drawPercentagesGraph(reportData.percentages.zeros_percentage, reportData.percentages.data_percentage);
+});
 
 
 
