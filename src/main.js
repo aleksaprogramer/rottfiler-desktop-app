@@ -3,6 +3,7 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const init = require(`./services/init.js`);
 const startCarvingEngine = require(`./services/startCarvingEngine.js`);
 const getRecoveredFiles = require(`./services/utils/getRecoveredFiles.js`);
+const getReportData = require(`./services/utils/getReportData.js`);
 
 // === DESKTOP APP WINDOW CONFIG ===
 const createWindow = () => {
@@ -48,5 +49,27 @@ app.whenReady().then(() => {
     await startCarvingEngine(filepath, dateId, filename);
     const allRecoveredFiles = getRecoveredFiles(dateId, filename);
     e.sender.send('recovered-files', allRecoveredFiles);
+  })
+
+  // RETURNING ALREADY PROCESSED DATA FROM A FOLDER
+  ipcMain.on('folder-file-input', async (e, filepath) => {
+    const folderPath = path.dirname(filepath);
+    console.log(folderPath);
+    const folderNamingPattern = /case_([0-9\-_]+)-(.*)/;
+    const match = folderPath.match(folderNamingPattern);
+
+    if (match) {
+      const dateId = match[1];
+      const filename = match[2];
+
+      const reportData = getReportData(dateId, filename);
+      console.log(reportData);
+
+      const recoveredFiles = getRecoveredFiles(dateId, filename);
+      console.log(recoveredFiles);
+
+    } else {
+      console.log(`Error: Invalid input`);
+    }
   })
 });

@@ -7,7 +7,7 @@ export const sendInputtedFile = (event, errorMessageToast, loadingScreen) => {
     return;
   }
 
-  const file = event.target.files[0];
+  const file = event.target.files[1];
   const fileExtension = String(file.name.split(`.`).pop());
 
   const alllowedExtensions = ['raw', 'dd', '001'];

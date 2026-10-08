@@ -28,5 +28,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
   // SENDING RECOVERED FILES DATA TO renderer.js
   onRecoveredFiles: (callback) => {
     ipcRenderer.on('recovered-files', (e, data) => callback(data));
+  },
+
+  // SENDING FILE TO GET A FOLDER PATH TO main.js
+  sendFileFromFolder: (file) => {
+    const filepath = webUtils.getPathForFile(file);
+    ipcRenderer.send('folder-file-input', filepath);
   }
 });

@@ -29,6 +29,7 @@ const extractedFilesLink = document.getElementById(`extracted-files-link`);
 
 // INPUTS
 const rawFileInput = document.getElementById(`dd-file`);
+const folderInput = document.getElementById(`folder`);
 
 // ERROR MESSAGES
 const errorMessageToast = document.getElementById(`error-message-toast`);
@@ -95,6 +96,25 @@ window.electronAPI.onRecoveredFiles((data) => {
     recoveredFilesContainer.insertAdjacentHTML("beforeend", html);
   })
 })
+
+
+
+// OPENING FOLDER OF PROCESSED DATA
+folderInput.addEventListener(`change`, (e) => {
+  const filesFromInput = e.target.files;
+
+  if (filesFromInput.length <= 0) {
+    errorMessageToast.classList.add(`display`);
+    errorMessageToast.textContent = `Please input a file for investigation`;
+    return;
+  }
+
+  const file = event.target.files[0];
+  
+  window.electronAPI.sendFileFromFolder(file);
+})
+
+
 
 // CHANGING PAGES ON CLICK (Import RAW File > Open Folder)
 openFolderLink.addEventListener(`click`, (e) => {
