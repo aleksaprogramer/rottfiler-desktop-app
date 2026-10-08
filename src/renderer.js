@@ -32,6 +32,7 @@ const errorMessageToast = document.getElementById(`error-message-toast`);
 
 // LOADING SCREENS
 const loadingScreen = document.getElementById(`loading-screen`);
+const loadingMessage = document.getElementById(`loading-message`);
 
 // CONTAINERS
 const reportContainer = document.getElementById(`report-container`);
@@ -78,7 +79,17 @@ window.electronAPI.onReportData((data) => {
 
 // RECEIVING RECOVERED FILES DATA
 window.electronAPI.onRecoveredFiles((data) => {
-  alert(JSON.stringify(data));
+  loadingMessage.classList.add(`non-active`);
+  
+  data.forEach((file) => {
+    const html = html`
+    <p>Name: ${file.name}</p>
+    <p>Type: ${file.type}</p>
+    <p>Filepath: ${file.path}</p>
+    `
+
+    recoveredFilesContainer.insertAdjacentHTML("beforeend", html);
+  })
 })
 
 // CHANGING PAGES ON CLICK (Report Analytics > Recovered Files)

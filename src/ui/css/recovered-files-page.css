@@ -9,12 +9,12 @@
     overflow: auto;
 }
 
-.recovered-files-page .content-holder .loading-message {
+.recovered-files-page .content-holder #loading-message {
     display: block;
     margin-top: 20px;
     font-size: 16px;
 }
 
-.recovered-files-page .content-holder .loading-message.non-active {
+.recovered-files-page .content-holder #loading-message.non-active {
     display: none;
 }
