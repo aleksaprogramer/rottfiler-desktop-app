@@ -78,7 +78,7 @@ window.electronAPI.onReportData((data) => {
 
 // RECEIVING RECOVERED FILES DATA
 window.electronAPI.onRecoveredFiles((data) => {
-  alert(JSON.parse(data));
+  alert(JSON.stringify(data));
 })
 
 // CHANGING PAGES ON CLICK (Report Analytics > Recovered Files)
