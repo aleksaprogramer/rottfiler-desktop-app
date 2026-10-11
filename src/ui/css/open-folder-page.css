@@ -8,18 +8,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url('../../assets/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     cursor: default;
 }
 
 .open-folder-page .content-holder {
     width: 406px;
-}
-
-.open-folder-page .content-holder h2 {
-    margin-bottom: 20px;
-    color: var(--brand-blue-color);
-    text-transform: uppercase;
-    text-align: center;
+    background-color: var(--primary-bg-color);
+    padding: 20px 50px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.70);
 }
 
 .open-folder-page .content-holder .icon-holder {

@@ -90,7 +90,7 @@ window.electronAPI.onRecoveredFiles((data) => {
     const html = html`
     <p>Name: ${file.name}</p>
     <p>Type: ${file.type}</p>
-    <p>Filepath: ${file.path}</p>
+    <p>Filepath: ${file.filepath}</p>
     `;
 
     recoveredFilesContainer.insertAdjacentHTML("beforeend", html);
@@ -134,6 +134,22 @@ window.electronAPI.onFolderData((data) => {
 
   reportContainer.insertAdjacentHTML("afterbegin", html);
   drawPercentagesGraph(reportData.percentages.zeros_percentage, reportData.percentages.data_percentage);
+
+  console.log(recoveredFiles[0]);
+
+  // recoveredFiles.forEach((file) => {
+  //   const html = html`
+  //   <div className="recovered-file">
+  //     <p>Name: ${file.name}</p>
+  //     <p>Type: ${file.type}</p>
+  //     <p>Filepath: ${file.filepath}</p>
+  //   </div>
+  //   `;
+
+  //   console.log(html);
+
+  //   recoveredFilesContainer.insertAdjacentHTML(`beforeend`, html);
+  // });
 });
 
 

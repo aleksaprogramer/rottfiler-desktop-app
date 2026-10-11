@@ -20,6 +20,8 @@ const createWindow = () => {
   win.maximize();
   win.setMenu(null);
 
+  win.webContents.openDevTools();
+
   win.loadFile('index.html');
   return win;
 };
@@ -54,7 +56,6 @@ app.whenReady().then(() => {
   // RETURNING ALREADY PROCESSED DATA FROM A FOLDER
   ipcMain.on('folder-file-input', async (e, filepath) => {
     const folderPath = path.dirname(filepath);
-    console.log(folderPath);
     const folderNamingPattern = /case_([0-9\-_]+)-(.*)/;
     const match = folderPath.match(folderNamingPattern);
 

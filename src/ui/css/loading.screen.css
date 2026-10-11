@@ -5,6 +5,7 @@
     top: 0;
     left: 0;
     background-color: var(--primary-bg-color);
+    z-index: 2;
 }
 
 .loading-screen .text-holder {
