@@ -71,7 +71,9 @@ app.whenReady().then(() => {
         recoveredFiles: recoveredFiles
       };
 
-      e.sender.send('folder-data', data);
+      const dataJson = JSON.stringify(data);
+
+      e.sender.send('folder-data', dataJson);
 
     } else {
       console.log(`Error: Invalid input`);

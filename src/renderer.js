@@ -31,6 +31,9 @@ const extractedFilesLink = document.getElementById(`extracted-files-link`);
 const rawFileInput = document.getElementById(`dd-file`);
 const folderInput = document.getElementById(`folder`);
 
+// BUTTONS
+const loadMoreBtn = document.getElementById(`load-more-btn`);
+
 // ERROR MESSAGES
 const errorMessageToast = document.getElementById(`error-message-toast`);
 
@@ -85,7 +88,7 @@ window.electronAPI.onReportData((data) => {
 // RECEIVING RECOVERED FILES DATA
 window.electronAPI.onRecoveredFiles((data) => {
   loadingMessage.classList.add(`non-active`);
-  
+
   data.forEach((file) => {
     const html = html`
     <p>Name: ${file.name}</p>
@@ -111,13 +114,55 @@ folderInput.addEventListener(`change`, (e) => {
   }
 
   const file = event.target.files[0];
-  
+
   errorMessageToast.classList.remove(`display`);
   window.electronAPI.sendFileFromFolder(file);
 });
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+let receivedFiles = [];
+let currentlyDisplayed = 0;
+const perPage = 10;
+
+const loadMoreFiles = () => {
+
+  if (currentlyDisplayed >= receivedFiles.length) {
+
+    if (loadMoreBtn) loadMoreBtn.style.display = `none`;
+    return;
+  }
+
+  const files = receivedFiles.slice(currentlyDisplayed, currentlyDisplayed + perPage);
+
+  let filesHtml = ``;
+
+  files.forEach((file) => {
+    filesHtml += `
+      <p>Name: ${file.name}</p>
+      <p>Type: ${file.type}</p>
+      `;
+  });
+
+  recoveredFilesContainer.insertAdjacentHTML(`beforeend`, filesHtml);
+
+  currentlyDisplayed += perPage;
+
+  if (loadMoreBtn) {
+    const remaining = receivedFiles.length - currentlyDisplayed;
+
+    if (remaining > 0) {
+      loadMoreBtn.style.display = `block`;
+      loadMoreBtn.innerText = `Load more`;
+
+    } else {
+      loadMoreBtn.style.display = `none`;
+    }
+  }
+};
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // RECEIVING FOLDER DATA
-window.electronAPI.onFolderData((data) => {
+window.electronAPI.onFolderData((dataJson) => {
   loadingScreen.classList.add(`non-active`);
   openFolderPage.classList.remove(`render`);
   reportPage.classList.add(`render`);
@@ -128,6 +173,9 @@ window.electronAPI.onFolderData((data) => {
   extractedFilesListItem.classList.remove(`non-active`);
   reportAnalyticsLink.classList.add(`active`);
 
+  loadingMessage.classList.add(`non-active`);
+
+  const data = JSON.parse(dataJson);
   const { reportData, recoveredFiles } = data;
 
   const html = generateBasicInfo(reportData);
@@ -135,22 +183,78 @@ window.electronAPI.onFolderData((data) => {
   reportContainer.insertAdjacentHTML("afterbegin", html);
   drawPercentagesGraph(reportData.percentages.zeros_percentage, reportData.percentages.data_percentage);
 
-  console.log(recoveredFiles[0]);
+  // PAGINATION LOGIC FOR DISPLAYING RECOVERED FILES
 
-  // recoveredFiles.forEach((file) => {
-  //   const html = html`
-  //   <div className="recovered-file">
-  //     <p>Name: ${file.name}</p>
-  //     <p>Type: ${file.type}</p>
-  //     <p>Filepath: ${file.filepath}</p>
-  //   </div>
+  // const firstTenFiles = recoveredFiles.slice(0, 10);
+
+  // if (!recoveredFilesContainer) {
+  //   console.log(`Error, there is not recovered files container`);
+  //   return;
+  // }
+
+  // recoveredFilesContainer.innerHTML = ``;
+
+  // let filesHtml = ``;
+
+  // firstTenFiles.forEach((file, i) => {
+  //   filesHtml += `
+  //   <p>Name: ${file.name}</p>
+  //   <p>Type: ${file.type}</p>
+  //   <p>Filepath: ${file.filepath}</p>
   //   `;
+  // });
+
+  // recoveredFilesContainer.insertAdjacentHTML(`beforeend`, filesHtml);
+
+
+
+  // let currentlyDisplayed = 0;
+  // const perPage = 10;
+
+  // const loadMoreFiles = () => {
+  //   const files = recoveredFiles.slice(currentlyDisplayed, currentlyDisplayed + perPage);
+
+  //   const html = ``;
+
+  //   files.forEach((file) => {
+  //     html += `
+  //     <div class="recovered-file">
+  //       <p>Name: ${file.name}</p>
+  //       <p>Type: ${file.type}</p>
+  //       <p>Filepath: ${file.filepath}</p>
+  //     </div>
+  //     `;
+  //   });
+
+  //   recoveredFilesContainer.insertAdjacentHTML(`beforeend`, html);
+  //   currentlyDisplayed += perPage;
 
   //   console.log(html);
 
-  //   recoveredFilesContainer.insertAdjacentHTML(`beforeend`, html);
-  // });
+  //   setButtonForLoadingMore();
+  // }
+
+  // const setButtonForLoadingMore = () => {
+
+  //   if (loadMoreBtn) loadMoreBtn.remove();
+
+  //   if (currentlyDisplayed < recoveredFiles.length) {
+  //     const newBtn = `<button id="load-more-btn">Load more</button>`;
+  //     recoveredFilesContainer.insertAdjacentHTML(`afterend`, newBtn);
+
+  //     document.getElementById(`load-more-btn`).addEventListener(`click`, loadMoreFiles);
+  //   }
+  // }
+
+  // loadMoreFiles();
+
+  receivedFiles = recoveredFiles;
+
+  recoveredFilesContainer = ``;
+
+  loadMoreFiles();
 });
+loadMoreBtn.addEventListener(`click`, loadMoreFiles);
 
 
 
