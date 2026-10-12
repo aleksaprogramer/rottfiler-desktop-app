@@ -42,6 +42,7 @@ app.whenReady().then(() => {
 
   // SENDING RAW FILE FOR PROCESSING AND RETURNING BACK DATA TO preload.js
   ipcMain.on('raw-file-input', async (e, filepath) => {
+    console.log(`Fajl je stigo do main.js`);
     const data = await init(filepath);
     e.sender.send(`report-data`, data);
   })
@@ -50,7 +51,8 @@ app.whenReady().then(() => {
   ipcMain.on('recover-files', async (e, filepath, dateId, filename) => {
     await startCarvingEngine(filepath, dateId, filename);
     const allRecoveredFiles = getRecoveredFiles(dateId, filename);
-    e.sender.send('recovered-files', allRecoveredFiles);
+    const allRecoveredFilesJson = JSON.stringify(allRecoveredFiles);
+    e.sender.send('recovered-files', allRecoveredFilesJson);
   })
 
   // RETURNING ALREADY PROCESSED DATA FROM A FOLDER

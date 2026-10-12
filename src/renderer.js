@@ -47,23 +47,6 @@
 
 
 
-// // EVENTS
-
-// // MINIMIZING APP WINDOW
-// minimizeBtn.addEventListener(`click`, () => {
-//   window.electronAPI.minimizeWindow();
-// })
-
-// // CLOSING APP WINDOW
-// closeBtn.addEventListener(`click`, () => {
-//   window.electronAPI.closeWindow();
-// })
-
-// // SENDING INPUTTED RAW FILE TO preload.js
-// rawFileInput.addEventListener(`change`, (e) => {
-//   sendInputtedFile(e, errorMessageToast, loadingScreen);
-// });
-
 // // DISPLAYING REPORT ON electronAPI RESPONSE
 // window.electronAPI.onReportData((data) => {
 //   loadingScreen.classList.add(`non-active`);
@@ -100,135 +83,6 @@
 //   })
 // })
 
-
-
-// // OPENING FOLDER OF PROCESSED DATA
-// folderInput.addEventListener(`change`, (e) => {
-//   loadingScreen.classList.remove(`non-active`);
-//   const filesFromInput = e.target.files;
-
-//   if (filesFromInput.length <= 0) {
-//     errorMessageToast.classList.add(`display`);
-//     errorMessageToast.textContent = `Please input a file for investigation`;
-//     return;
-//   }
-
-//   const file = event.target.files[0];
-
-//   errorMessageToast.classList.remove(`display`);
-//   window.electronAPI.sendFileFromFolder(file);
-// });
-
-// ////////////////////////////////////////////////////////////////////////////////////////////////////
-// let receivedFiles = [];
-// let currentlyDisplayed = 0;
-// const perPage = 10;
-
-// const loadMoreFiles = () => {
-
-//   if (currentlyDisplayed >= receivedFiles.length) {
-
-//     if (loadMoreBtn) loadMoreBtn.style.display = `none`;
-//     return;
-//   }
-
-//   const files = receivedFiles.slice(currentlyDisplayed, currentlyDisplayed + perPage);
-
-//   let filesHtml = ``;
-
-//   files.forEach((file) => {
-//     filesHtml += `
-//       <p>Name: ${file.name}</p>
-//       <p>Type: ${file.type}</p>
-//       `;
-//   });
-
-//   recoveredFilesContainer.insertAdjacentHTML(`beforeend`, filesHtml);
-
-//   currentlyDisplayed += perPage;
-
-//   if (loadMoreBtn) {
-//     const remaining = receivedFiles.length - currentlyDisplayed;
-
-//     if (remaining > 0) {
-//       loadMoreBtn.style.display = `block`;
-//       loadMoreBtn.innerText = `Load more`;
-
-//     } else {
-//       loadMoreBtn.style.display = `none`;
-//     }
-//   }
-// };
-// ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// // RECEIVING FOLDER DATA
-// window.electronAPI.onFolderData((dataJson) => {
-//   loadingScreen.classList.add(`non-active`);
-//   openFolderPage.classList.remove(`render`);
-//   reportPage.classList.add(`render`);
-
-//   importRawFileListItem.classList.add(`non-active`);
-//   openFolderListItem.classList.add(`non-active`);
-//   reportAnalyticsListItem.classList.remove(`non-active`);
-//   extractedFilesListItem.classList.remove(`non-active`);
-//   reportAnalyticsLink.classList.add(`active`);
-
-//   loadingMessage.classList.add(`non-active`);
-
-//   const data = JSON.parse(dataJson);
-//   const { reportData, recoveredFiles } = data;
-
-//   const html = generateBasicInfo(reportData);
-
-//   reportContainer.insertAdjacentHTML("afterbegin", html);
-
-//   drawPercentagesGraph(reportData.percentages.zeros_percentage, reportData.percentages.data_percentage);
-
-//   // PAGINATION LOGIC FOR DISPLAYING RECOVERED FILES
-
-//   receivedFiles.push(...recoveredFiles);
-
-//   recoveredFilesContainer.innerHTML = ``;
-
-//   loadMoreFiles();
-// });
-
-// loadMoreBtn.addEventListener(`click`, loadMoreFiles);
-
-
-
-// // CHANGING PAGES ON CLICK (Import RAW File > Open Folder)
-// openFolderLink.addEventListener(`click`, (e) => {
-//   importRawFileLink.classList.remove(`active`);
-//   openFolderLink.classList.add(`active`);
-//   importRawFilePage.classList.remove(`render`);
-//   openFolderPage.classList.add(`render`);
-// })
-
-// // CHANGING PAGES ON CLICK (Open Folder > Import RAW File)
-// importRawFileLink.addEventListener(`click`, (e) => {
-//   openFolderLink.classList.remove(`active`);
-//   importRawFileLink.classList.add(`active`);
-//   openFolderPage.classList.remove(`render`);
-//   importRawFilePage.classList.add(`render`);
-// })
-
-// // CHANGING PAGES ON CLICK (Report Analytics > Recovered Files)
-// extractedFilesLink.addEventListener(`click`, (e) => {
-//   reportAnalyticsLink.classList.remove(`active`);
-//   extractedFilesLink.classList.add(`active`);
-//   reportPage.classList.remove(`render`);
-//   recoveredFilesPage.classList.add(`render`);
-// });
-
-// // CHANGING PAGES ON CLICK (Recovered Files > Report Analytics)
-// reportAnalyticsLink.addEventListener(`click`, (e) => {
-//   extractedFilesLink.classList.remove(`active`);
-//   reportAnalyticsLink.classList.add(`active`);
-//   recoveredFilesPage.classList.remove(`render`);
-//   reportPage.classList.add(`render`);
-// })
-
 // OLD CODE
 
 
@@ -238,4 +92,4 @@ import App from "./App.js";
 
 document.addEventListener(`DOMContentLoaded`, () => {
   window.diskForensicsApp = new App();
-})
+});

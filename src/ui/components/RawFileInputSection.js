@@ -11,8 +11,8 @@ class RawFileInputSection {
     }
 
     initEvents() {
-        this.rawFileInput.addEventListener(`click`, (e) => {
-            sendInputtedFile(e, errorMessageToast, loadingScreen);
+        this.rawFileInput.addEventListener(`change`, (e) => {
+            sendInputtedFile(e, this.errorMessageToast, this.loadingScreen);
         });
     }
 };

@@ -1,5 +1,6 @@
 export const sendInputtedFile = (event, errorMessageToast, loadingScreen) => {
   const filesFromInput = event.target.files;
+  console.log(filesFromInput);
 
   if (filesFromInput.length <= 0) {
     errorMessageToast.classList.add(`display`);
@@ -7,7 +8,8 @@ export const sendInputtedFile = (event, errorMessageToast, loadingScreen) => {
     return;
   }
 
-  const file = event.target.files[1];
+  const file = event.target.files[0];
+  console.log(file);
   const fileExtension = String(file.name.split(`.`).pop());
 
   const alllowedExtensions = ['raw', 'dd', '001'];
