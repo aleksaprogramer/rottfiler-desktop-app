@@ -6,7 +6,8 @@
     display: block;
     width: 100%;
     cursor: default;
-    overflow: auto;
+    /* overflow-y: auto; */
+    overflow-y: scroll;
 }
 
 .recovered-files-page .content-holder #loading-message {

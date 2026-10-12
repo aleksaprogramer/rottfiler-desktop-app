@@ -181,79 +181,18 @@ window.electronAPI.onFolderData((dataJson) => {
   const html = generateBasicInfo(reportData);
 
   reportContainer.insertAdjacentHTML("afterbegin", html);
+
   drawPercentagesGraph(reportData.percentages.zeros_percentage, reportData.percentages.data_percentage);
 
   // PAGINATION LOGIC FOR DISPLAYING RECOVERED FILES
 
-  // const firstTenFiles = recoveredFiles.slice(0, 10);
+  receivedFiles.push(...recoveredFiles);
 
-  // if (!recoveredFilesContainer) {
-  //   console.log(`Error, there is not recovered files container`);
-  //   return;
-  // }
-
-  // recoveredFilesContainer.innerHTML = ``;
-
-  // let filesHtml = ``;
-
-  // firstTenFiles.forEach((file, i) => {
-  //   filesHtml += `
-  //   <p>Name: ${file.name}</p>
-  //   <p>Type: ${file.type}</p>
-  //   <p>Filepath: ${file.filepath}</p>
-  //   `;
-  // });
-
-  // recoveredFilesContainer.insertAdjacentHTML(`beforeend`, filesHtml);
-
-
-
-  // let currentlyDisplayed = 0;
-  // const perPage = 10;
-
-  // const loadMoreFiles = () => {
-  //   const files = recoveredFiles.slice(currentlyDisplayed, currentlyDisplayed + perPage);
-
-  //   const html = ``;
-
-  //   files.forEach((file) => {
-  //     html += `
-  //     <div class="recovered-file">
-  //       <p>Name: ${file.name}</p>
-  //       <p>Type: ${file.type}</p>
-  //       <p>Filepath: ${file.filepath}</p>
-  //     </div>
-  //     `;
-  //   });
-
-  //   recoveredFilesContainer.insertAdjacentHTML(`beforeend`, html);
-  //   currentlyDisplayed += perPage;
-
-  //   console.log(html);
-
-  //   setButtonForLoadingMore();
-  // }
-
-  // const setButtonForLoadingMore = () => {
-
-  //   if (loadMoreBtn) loadMoreBtn.remove();
-
-  //   if (currentlyDisplayed < recoveredFiles.length) {
-  //     const newBtn = `<button id="load-more-btn">Load more</button>`;
-  //     recoveredFilesContainer.insertAdjacentHTML(`afterend`, newBtn);
-
-  //     document.getElementById(`load-more-btn`).addEventListener(`click`, loadMoreFiles);
-  //   }
-  // }
-
-  // loadMoreFiles();
-
-  receivedFiles = recoveredFiles;
-
-  recoveredFilesContainer = ``;
+  recoveredFilesContainer.innerHTML = ``;
 
   loadMoreFiles();
 });
+
 loadMoreBtn.addEventListener(`click`, loadMoreFiles);
 
 
