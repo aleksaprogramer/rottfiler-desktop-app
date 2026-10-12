@@ -6,8 +6,20 @@
     display: block;
     width: 100%;
     cursor: default;
-    /* overflow-y: auto; */
-    overflow-y: scroll;
+    overflow-y: auto;
+    height: 100vh;
+    padding-bottom: 100px;
+}
+
+.recovered-files-page .content-holder {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.recovered-files-page .content-holder h2 {
+    color: var(--secondary-text-color);
+    margin-top: 20px;
+    font-size: 22px;
 }
 
 .recovered-files-page .content-holder #loading-message {
@@ -18,4 +30,22 @@
 
 .recovered-files-page .content-holder #loading-message.non-active {
     display: none;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--primary-bg-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--brand-blue-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--brand-blue-color-hover);
 }
