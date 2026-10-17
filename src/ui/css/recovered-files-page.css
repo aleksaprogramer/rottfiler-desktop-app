@@ -45,7 +45,29 @@
 
 .recovered-files-page .content-holder #recovered-files-container .recovered-file .recovered-image {
     width: 230px;
-} 
+}
+
+.recovered-files-page .content-holder .button-holder {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.recovered-files-page .content-holder .button-holder #load-more-btn {
+    outline: none;
+    border: none;
+    background-color: var(--primary-bg-color);
+    color: var(--brand-blue-color);
+    font-size: 16px;
+    margin-right: 5px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.recovered-files-page .content-holder .button-holder #load-more-btn:hover {
+    color: var(--brand-blue-color-hover);
+}
 
 ::-webkit-scrollbar {
     width: 8px;

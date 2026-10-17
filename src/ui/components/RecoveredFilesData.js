@@ -44,6 +44,7 @@ class RecoveredFilesData {
             <div class="recovered-file">
                 <p>Name: ${file.name}</p>
                 <p>Type: ${file.type}</p>
+                <p>File is available at: ${file.filepath}</p>
 
                 ${isImage ? `<img src="${file.filepath}" alt="" class="recovered-image">` : ``}
                 
