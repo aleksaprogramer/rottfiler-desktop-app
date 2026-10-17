@@ -16,6 +16,7 @@ class RecoveredFilesData {
         this.reportAnalyticsLink = document.getElementById(`report-analytics-link`);
         this.loadingMessage = document.getElementById(`loading-message`);
         this.reportContainer = document.getElementById(`report-container`);
+        this.backBtnHolder = document.getElementById(`back-btn-holder`);
 
         this.receivedFiles = [];
         this.currentlyDisplayed = 0;
@@ -81,6 +82,7 @@ class RecoveredFilesData {
             this.loadingScreen.classList.add(`non-active`);
             this.openFolderPage.classList.remove(`render`);
             this.reportPage.classList.add(`render`);
+            this.backBtnHolder.classList.remove(`non-active`);
 
             this.importRawFileListItem.classList.add(`non-active`);
             this.openFolderListItem.classList.add(`non-active`);
@@ -107,6 +109,11 @@ class RecoveredFilesData {
         });
 
         this.loadMoreBtn.addEventListener(`click`, () => this.loadMoreFiles());
+
+        this.backBtnHolder.addEventListener(`click`, (e) => {
+            this.receivedFiles = [];
+            this.currentlyDisplayed = 0;
+        });
     };
 };
 

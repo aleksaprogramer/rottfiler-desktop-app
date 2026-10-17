@@ -1,0 +1,34 @@
+.back-btn-holder {
+    position: absolute;
+    left: 40px;
+    bottom: 40px;
+    z-index: 1;
+}
+
+.back-btn-holder.non-active {
+    display: none;
+}
+
+.back-btn-holder #back-btn {
+    display: flex;
+    align-items: center;
+    background-color: var(--brand-blue-color);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    transition: 0.2s;
+}
+
+.back-btn-holder #back-btn:hover {
+    background-color: var(--brand-blue-color-hover);
+}
+
+.back-btn-holder #back-btn img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.back-btn-holder #back-btn p {
+    color: var(--primary-bg-color);
+}

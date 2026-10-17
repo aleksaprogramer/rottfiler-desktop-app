@@ -16,6 +16,7 @@ class RawFileData {
         this.loadingMessage = document.getElementById(`loading-message`);
         this.recoveredFilesContainer = document.getElementById(`recovered-files-container`);
         this.loadMoreBtn = document.getElementById(`load-more-btn`);
+        this.backBtnHolder = document.getElementById(`back-btn-holder`);
 
         this.receivedFiles = [];
         this.currentlyDisplayed = 0;
@@ -65,6 +66,7 @@ class RawFileData {
             this.loadingScreen.classList.add(`non-active`);
             this.importRawFilePage.classList.remove(`render`);
             this.reportPage.classList.add(`render`);
+            this.backBtnHolder.classList.remove(`non-active`);
 
             this.importRawFileListItem.classList.add(`non-active`);
             this.openFolderListItem.classList.add(`non-active`);
@@ -93,6 +95,11 @@ class RawFileData {
         });
 
         this.loadMoreBtn.addEventListener(`click`, () => this.loadMoreFiles());
+
+        this.backBtnHolder.addEventListener(`click`, (e) => {
+            this.receivedFiles = [];
+            this.currentlyDisplayed = 0;
+        });
     };
 };
 
