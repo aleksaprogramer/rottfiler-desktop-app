@@ -16,7 +16,7 @@ class RecoveredFilesData {
         this.reportAnalyticsLink = document.getElementById(`report-analytics-link`);
         this.loadingMessage = document.getElementById(`loading-message`);
         this.reportContainer = document.getElementById(`report-container`);
-        
+
         this.receivedFiles = [];
         this.currentlyDisplayed = 0;
         this.perPage = 10;
@@ -37,9 +37,24 @@ class RecoveredFilesData {
         let filesHtml = ``;
 
         files.forEach((file) => {
+            const isImage = file.type === 'JPG' || file.type === 'PNG';
+            const isVideo = file.type === 'MP4';
+
             filesHtml += `
-            <p>Name: ${file.name}</p>
-            <p>Type: ${file.type}</p>
+            <div class="recovered-file">
+                <p>Name: ${file.name}</p>
+                <p>Type: ${file.type}</p>
+
+                ${isImage ? `<img src="${file.filepath}" alt="" class="recovered-image">` : ``}
+                
+                ${isVideo ? `
+                    <video width="230" controls>
+                        <source src="${file.filepath}" type="video/mp4" />
+                        It is currently not possible to display this video.
+                    </video>
+                    ` : ``
+                }
+            </div>
             `;
         });
 

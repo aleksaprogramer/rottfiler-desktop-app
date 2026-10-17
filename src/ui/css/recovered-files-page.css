@@ -32,6 +32,21 @@
     display: none;
 }
 
+.recovered-files-page .content-holder #recovered-files-container .recovered-file {
+    padding: 30px;
+    background-color: var(--frame-bg-color);
+    border-radius: 20px;
+    margin-top: 30px;
+}
+
+.recovered-files-page .content-holder #recovered-files-container .recovered-file p {
+    margin-bottom: 30px;
+}
+
+.recovered-files-page .content-holder #recovered-files-container .recovered-file .recovered-image {
+    width: 230px;
+} 
+
 ::-webkit-scrollbar {
     width: 8px;
 }
