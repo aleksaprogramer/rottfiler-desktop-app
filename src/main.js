@@ -20,6 +20,9 @@ const createWindow = () => {
   win.maximize();
   win.setMenu(null);
 
+  // Delete in production
+  // win.webContents.openDevTools();
+
   win.loadFile('index.html');
   return win;
 };
