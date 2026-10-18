@@ -5,30 +5,66 @@ const startCarvingEngine = require(`./services/startCarvingEngine.js`);
 const getRecoveredFiles = require(`./services/utils/getRecoveredFiles.js`);
 const getReportData = require(`./services/utils/getReportData.js`);
 
+// === SPLASH SCREEN ===
+let splashWin;
+
+const createSplashWindow = () => {
+  splashWin = new BrowserWindow({
+    width: 400,
+    height: 300,
+    frame: false,
+    transparent: true,
+    resizable: false,
+    alwaysOnTop: true,
+    center: true,
+    show: false,
+    icon: path.join(__dirname, '..', 'public', 'favicon.png'),
+  });
+
+  splashWin.loadFile(path.join(process.cwd(), 'public', 'splash.html'));
+
+  splashWin.once(`ready-to-show`, () => {
+    splashWin.show();
+  })
+}
+
 // === DESKTOP APP WINDOW CONFIG ===
 const createWindow = () => {
   const win = new BrowserWindow({
     minWidth: 1200,
     minHeight: 800,
     frame: false,
+    show: false,
     icon: path.join(__dirname, '..', 'public', 'favicon.png'),
     webPreferences: {
       preload: path.join(__dirname, `preload.js`)
     }
   })
 
-  win.maximize();
-  win.setMenu(null);
-
   // Delete in production
   // win.webContents.openDevTools();
 
   win.loadFile('index.html');
+
+  win.once(`ready-to-show`, () => {
+    setTimeout(() => {
+
+      splashWin.close();
+      win.maximize();
+      win.setMenu(null);
+      win.show();
+      
+    }, 5000);
+  })
+
   return win;
 };
 
 // === DESKTOP APP INITIALIZATION ===
 app.whenReady().then(() => {
+
+  // STARTIG FIRST THE SPLASH SCREEN THEN THE MAIN APP WINDOW
+  createSplashWindow();
   const win = createWindow();
 
   // MINIMIZING APP WINDOW
