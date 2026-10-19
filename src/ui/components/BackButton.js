@@ -44,7 +44,12 @@ class BackButton {
                 this.reportContainer.innerHTML = `
                     <div class="graphs">
                         <div class="percentages-graph-frame">
+                            <h3>Percentages</h3>
                             <canvas id="percentages-graph"></canvas>
+                        </div>
+                        <div class="density-map-graph-frame">
+                            <h3>Density Map</h3>
+                            <canvas id="density-map-graph"></canvas>
                         </div>
                     </div>
                 `;

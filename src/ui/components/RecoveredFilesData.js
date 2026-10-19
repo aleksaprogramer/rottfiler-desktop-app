@@ -1,5 +1,6 @@
 import { generateBasicInfo } from '../utils/generateBasicInfo.js';
 import { drawPercentagesGraph } from '../utils/drawPercentagesGraph.js';
+import { drawDensityMapGraph } from '../utils/drawDensityMapGraph.js';
 
 class RecoveredFilesData {
 
@@ -100,6 +101,7 @@ class RecoveredFilesData {
             this.reportContainer.insertAdjacentHTML("afterbegin", html);
 
             drawPercentagesGraph(reportData.percentages.zeros_percentage, reportData.percentages.data_percentage);
+            drawDensityMapGraph(reportData.density_map);
 
             this.receivedFiles.push(...recoveredFiles);
 

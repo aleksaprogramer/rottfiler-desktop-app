@@ -61,10 +61,18 @@
     padding: 25px;
     border-radius: 20px;
     margin-bottom: 30px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .report-page .content-holder #report-container .graphs .percentages-graph-frame {
     width: 270px;
+    height: 270px;
+    position: relative;
+}
+
+.report-page .content-holder #report-container .graphs .density-map-graph-frame {
+    width: 400px;
     height: 270px;
     position: relative;
 }
