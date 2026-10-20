@@ -1,7 +1,12 @@
+import { convertBytes } from "./convertBytes.js";
+
 export const generateBasicInfo = (
     data
 ) => {
     const totalSizeOfEmptySpaceConvertedToGB = (data.total_size_of_empty_space_in_MB / 1024).toFixed(2);
+    const { bytesToMB: totalMB, bytesToGB: totalGB } = convertBytes(data.bytes_statistic.total_bytes);
+    const { bytesToMB: zerosMB, bytesToGB: zerosGB } = convertBytes(data.bytes_statistic.zeros_of_bytes);
+    const { bytesToMB: deletedDataMB, bytesToGB: deletedDataGB } = convertBytes(data.bytes_statistic.deleted_data_bytes);
 
     const html = `
     <div class="empty-file-info">
@@ -12,9 +17,9 @@ export const generateBasicInfo = (
             <div class="text">
             <p><span>Processed file:</span> ${data.processed_file}</p>
             <p><span>Size of an empty space:</span> ${data.total_size_of_empty_space_in_MB} MB (${totalSizeOfEmptySpaceConvertedToGB} GB)</p>
-            <p><span>Total number of bytes:</span> ${data.bytes_statistic.total_bytes}</p>
-            <p><span>Total number of bytes that are zeros:</span> ${data.bytes_statistic.zeros_of_bytes}</p>
-            <p><span>Total number of bytes that are deleted data:</span> ${data.bytes_statistic.deleted_data_bytes}</p>
+            <p><span>Total number of bytes:</span> ${data.bytes_statistic.total_bytes} B (${totalMB} MB or ${totalGB} GB)</p>
+            <p><span>Total number of bytes that are zeros:</span> ${data.bytes_statistic.zeros_of_bytes} B (${zerosMB} MB or ${zerosGB} GB)</p>
+            <p><span>Total number of bytes that are deleted data:</span> ${data.bytes_statistic.deleted_data_bytes} B (${deletedDataMB} MB or ${deletedDataGB} GB)</p>
             <p><span>Percentage of zeros:</span> ${data.percentages.zeros_percentage} %</p>
             <p><span>Percentage of deleted data:</span> ${data.percentages.data_percentage} %</p>
         </div>
