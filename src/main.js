@@ -42,7 +42,7 @@ const createWindow = () => {
   })
 
   // Delete in production
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 
   win.loadFile('index.html');
 
@@ -54,7 +54,7 @@ const createWindow = () => {
       win.setMenu(null);
       win.show();
       
-    }, 5000);
+    }, 2000); // 5000
   })
 
   return win;
