@@ -21,6 +21,7 @@ export const drawPercentagesGraph = (zeroPercentage, dataPercentage) => {
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      resizeDelay: 50,
       plugins: {
         legend: {
           position: 'bottom',

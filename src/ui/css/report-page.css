@@ -3,10 +3,13 @@
 }
 
 .report-page.render {
-    display: block;
+    display: flex;
+    flex-grow: 1;
     width: 100%;
     cursor: default;
-    overflow: auto;
+    height: 100%;
+    overflow-y: auto;
+    padding-bottom: 30px;
 }
 
 .report-page .content-holder {
@@ -21,60 +24,143 @@
     font-size: 22px;
 }
 
-.report-page .content-holder #report-container .empty-file-info {
+.report-page .content-holder #report-container .empty-file-info .hashes {
     background-color: var(--brand-blue-color);
-    padding: 25px;
-    border-radius: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 
-.report-page .content-holder #report-container .empty-file-info .heading-holder {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.report-page .content-holder #report-container .empty-file-info .hashes .hash {
     margin-bottom: 20px;
 }
 
-.report-page .content-holder #report-container .empty-file-info .heading-holder h3 {
-    font-size: 22px;
+.report-page .content-holder #report-container .empty-file-info .hashes .hash:last-of-type {
+    margin-bottom: 0;
 }
 
-.report-page .content-holder #report-container .empty-file-info .heading-holder img {
-    width: 35px;
+.report-page .content-holder #report-container .empty-file-info .row {
+    display: flex;
+    gap: 20px;
 }
 
-.report-page .content-holder #report-container .empty-file-info .text {
-    line-height: 2;
+.report-page .content-holder #report-container .empty-file-info .row .hashes .hash h3 {
+    font-weight: 300;
+    color: var(--branch-blue-color-light);
+    margin-bottom: 10px;
 }
 
-.report-page .content-holder #report-container .empty-file-info .text p {
-    font-size: 15px;
+.report-page .content-holder #report-container .empty-file-info .row .hashes .hash p {
+    background-color: var(--primary-bg-color);
+    padding: 13px;
+    border-radius: 8px;
+    color: var(--brand-blue-color);
 }
 
-.report-page .content-holder #report-container .empty-file-info .text p span {
+.report-page .content-holder #report-container .empty-file-info .row .empty-file {
+    background-color: var(--frame-bg-color);
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.report-page .content-holder #report-container .empty-file-info .row .empty-file .text {
+    width: 100%;
+}
+
+.report-page .content-holder #report-container .empty-file-info .row .empty-file .text h3 {
+    font-weight: 300;
+    color: var(--brand-blue-color);
+    margin-bottom: 10px;
+}
+
+.report-page .content-holder #report-container .empty-file-info .row .empty-file .text p {
+    margin-bottom: 30px;
+    color: var(--brand-blue-color);
+    font-size: 18px;
     font-weight: 700;
 }
 
-.report-page .content-holder #report-container .graphs {
-    background-color: var(--graph-bg-color);
-    padding: 25px;
-    border-radius: 20px;
-    margin-bottom: 30px;
+.report-page .content-holder #report-container .empty-file-info .row .empty-file .img-holder {
+    width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
 }
 
-.report-page .content-holder #report-container .graphs .percentages-graph-frame {
-    width: 270px;
-    height: 270px;
-    position: relative;
+.report-page .content-holder #report-container .empty-file-info .row .empty-file .img-holder img {
+    width: 250px;
 }
 
-.report-page .content-holder #report-container .graphs .density-map-graph-frame {
-    width: 400px;
-    height: 270px;
+.report-page .content-holder #report-container .empty-file-info .bytes-info {
+    background-color: var(--brand-blue-color);
+    margin-bottom: 20px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.report-page .content-holder #report-container .empty-file-info .bytes-info .bytes h3 {
+    font-weight: 300;
+    color: var(--branch-blue-color-light);
+    margin-bottom: 10px;
+}
+
+.report-page .content-holder #report-container .empty-file-info .bytes-info .bytes h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.report-page .content-holder #report-container .empty-file-info .bytes-info .bytes p {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.report-page .content-holder #report-container .graphs-wrapper {
+    padding-bottom: 30px;
+}
+
+.report-page .content-holder #report-container .graphs-wrapper .graphs {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    height: 350px !important;
+}
+
+.report-page .content-holder #report-container .graphs-wrapper .graphs .percentages-graph-frame {
+    background-color: var(--graph-bg-color);
+    padding: 30px;
+    border-radius: 15px;
+    flex: 1;
+    width: 320px !important;
+    height: 350px !important;
     position: relative;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.report-page .content-holder #report-container .graphs-wrapper .graphs .percentages-graph-frame canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+}
+
+.report-page .content-holder #report-container .graphs-wrapper .graphs .density-map-graph-frame {
+    background-color: var(--graph-bg-color);
+    padding: 30px;
+    border-radius: 15px;
+    flex: 1;
+    max-width: 880px;
+    max-height: 350px;
+    position: relative;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 
 ::-webkit-scrollbar {

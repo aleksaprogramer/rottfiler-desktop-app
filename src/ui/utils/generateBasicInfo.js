@@ -10,20 +10,64 @@ export const generateBasicInfo = (
 
     const html = `
     <div class="empty-file-info">
-        <div class="heading-holder">
-              <h3>Basic Info</h3>
-              <img src="./src/assets/info-circle.png" alt="Info">
+
+            <div class="row">
+              <div class="hashes">
+                <div class="hash">
+                  <h3>MD5</h3>
+                  <p>c7d7e2da731ffe666dbf50a547e23aed</p>
+                </div>
+
+                <div class="hash">
+                  <h3>SHA-256</h3>
+                  <p>e674774c89e4d056a332e26bc0b9d985382b809a60a5ca56e1e328f06ef5d665</p>
+                </div>
+
+                <div class="hash">
+                  <h3>SHA-1</h3>
+                  <p>62c10099fea590dbc9ca02a6c357fc8f55983aac</p>
+                </div>
+              </div>
+
+              <div class="empty-file">
+                <div class="text">
+                  <h3>Input file</h3>
+                  <p>${data.filename}</p>
+
+                  <h3>Date ID</h3>
+                  <p>${data.date_id}</p>
+
+                  <h3>Size of empty space</h3>
+                  <p>${totalSizeOfEmptySpaceConvertedToGB} GB (${data.total_size_of_empty_space_in_MB} MB)</p>
+                </div>
+
+                <div class="img-holder">
+                  <img src="./src/assets/file.png" alt="File">
+                </div>
+              </div>
             </div>
-            <div class="text">
-            <p><span>Processed file:</span> ${data.processed_file}</p>
-            <p><span>Size of an empty space:</span> ${data.total_size_of_empty_space_in_MB} MB (${totalSizeOfEmptySpaceConvertedToGB} GB)</p>
-            <p><span>Total number of bytes:</span> ${data.bytes_statistic.total_bytes} B (${totalMB} MB or ${totalGB} GB)</p>
-            <p><span>Total number of bytes that are zeros:</span> ${data.bytes_statistic.zeros_of_bytes} B (${zerosMB} MB or ${zerosGB} GB)</p>
-            <p><span>Total number of bytes that are deleted data:</span> ${data.bytes_statistic.deleted_data_bytes} B (${deletedDataMB} MB or ${deletedDataGB} GB)</p>
-            <p><span>Percentage of zeros:</span> ${data.percentages.zeros_percentage} %</p>
-            <p><span>Percentage of deleted data:</span> ${data.percentages.data_percentage} %</p>
-        </div>
-    </div>`;
+
+            <div class="bytes-info">
+              <div class="bytes">
+                <h3>Total Bytes</h3>
+                <h4>${totalGB} GB</h4>
+                <p>100 %</p>
+              </div>
+
+              <div class="bytes">
+                <h3>Total Deleted Data</h3>
+                <h4>${deletedDataGB} GB</h4>
+                <p>${data.percentages.data_percentage} %</p>
+              </div>
+
+              <div class="bytes">
+                <h3>Total Zeros</h3>
+                <h4>${zerosGB} GB</h4>
+                <p>${data.percentages.zeros_percentage} %</p>
+              </div>
+            </div>
+
+          </div>`;
 
     return html;
 };

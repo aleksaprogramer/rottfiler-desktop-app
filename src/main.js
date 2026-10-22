@@ -42,7 +42,7 @@ const createWindow = () => {
   })
 
   // Delete in production
-  // win.webContents.openDevTools();
+  win.webContents.openDevTools();
 
   win.loadFile('index.html');
 

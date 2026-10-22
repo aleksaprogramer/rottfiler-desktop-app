@@ -1,5 +1,6 @@
 import { generateBasicInfo } from '../utils/generateBasicInfo.js';
 import { drawPercentagesGraph } from '../utils/drawPercentagesGraph.js';
+import { drawDensityMapGraph } from '../utils/drawDensityMapGraph.js';
 
 class RawFileData {
 
@@ -79,6 +80,7 @@ class RawFileData {
             this.reportContainer.insertAdjacentHTML("afterbegin", html);
 
             drawPercentagesGraph(data.percentages.zeros_percentage, data.percentages.data_percentage);
+            drawDensityMapGraph(data.density_map);
 
             window.electronAPI.recoverFiles(data.processed_file, data.date_id, data.filename);
         });
