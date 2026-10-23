@@ -1,5 +1,5 @@
 const path = require(`path`);
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, shell } = require('electron');
 const init = require(`./services/init.js`);
 const startCarvingEngine = require(`./services/startCarvingEngine.js`);
 const getRecoveredFiles = require(`./services/utils/getRecoveredFiles.js`);
@@ -42,7 +42,7 @@ const createWindow = () => {
   })
 
   // Delete in production
-  // win.webContents.openDevTools();
+  win.webContents.openDevTools();
 
   win.loadFile('index.html');
 
@@ -118,4 +118,9 @@ app.whenReady().then(() => {
       console.log(`Error: Invalid input`);
     }
   })
+
+  // OPENING A FILE WITH OS
+  ipcMain.on('open-file-with-system', (e, filepath) => {
+    shell.openPath(filepath);
+  });
 });

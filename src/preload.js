@@ -39,5 +39,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
   // SENDING FOLDER DATA TO renderer.js
   onFolderData: (callback) => {
     ipcRenderer.on('folder-data', (e, data) => callback(data));
+  },
+
+  // SENDING FILEPATH TO main.js IN ORDER TO OPEN
+  openFile: (filepath) => {
+    ipcRenderer.send('open-file-with-system', filepath);
   }
 });

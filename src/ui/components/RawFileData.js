@@ -21,7 +21,7 @@ class RawFileData {
 
         this.receivedFiles = [];
         this.currentlyDisplayed = 0;
-        this.perPage = 10;
+        this.perPage = 8;
 
         this.initElectronListener();
     }

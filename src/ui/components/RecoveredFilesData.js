@@ -21,7 +21,7 @@ class RecoveredFilesData {
 
         this.receivedFiles = [];
         this.currentlyDisplayed = 0;
-        this.perPage = 10;
+        this.perPage = 8;
 
         this.initElectronListener();
     }
@@ -41,22 +41,35 @@ class RecoveredFilesData {
         files.forEach((file) => {
             const isImage = file.type === 'JPG' || file.type === 'PNG';
             const isVideo = file.type === 'MP4';
+            const isPdf = file.type === 'PDF';
+            const isZip = file.type === 'ZIP';
 
             filesHtml += `
-            <div class="recovered-file">
-                <p>Name: ${file.name}</p>
-                <p>Type: ${file.type}</p>
-                <p>File is available at: ${file.filepath}</p>
+            <div class="recovered-file" data-path="${file.filepath}">
 
-                ${isImage ? `<img src="${file.filepath}" alt="" class="recovered-image">` : ``}
+                ${isImage ? `<img src="${file.filepath}" alt="${file.name}" class="recovered-image" loading="lazy" decoding="async">` : ``}
                 
                 ${isVideo ? `
-                    <video width="230" controls>
+                    <video width="230" controls class="recovered-video">
                         <source src="${file.filepath}" type="video/mp4" />
                         It is currently not possible to display this video.
                     </video>
                     ` : ``
                 }
+
+                ${isPdf ? `
+                    <img src="./src/assets/pdf.png" alt="PDF" class="recovered-document">
+                    ` : ``
+                }
+
+                ${isZip ? `
+                    <img src="./src/assets/zip.png" alt="ZIP" class="recovered-archive">
+                    ` : ``
+                }
+
+                <p>Name: ${file.name}</p>
+                <p>Type: ${file.type}</p>
+                <button class="open-file-btn">Open File</button>
             </div>
             `;
         });
@@ -115,6 +128,24 @@ class RecoveredFilesData {
         this.backBtnHolder.addEventListener(`click`, (e) => {
             this.receivedFiles = [];
             this.currentlyDisplayed = 0;
+        });
+
+        this.recoveredFilesContainer.addEventListener(`click`, (e) => {
+            const clickedFile = e.target.closest(`.recovered-file`);
+
+            if (!clickedFile) {
+                return;
+            }
+
+            if (e.target.classList.contains(`open-file-btn`)) {
+                const filepath = clickedFile.dataset.path;
+
+                if (!filepath) {
+                    return;
+                }
+
+                window.electronAPI.openFile(filepath);
+            }
         });
     };
 };

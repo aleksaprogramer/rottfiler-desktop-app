@@ -19,6 +19,7 @@
 .recovered-files-page .content-holder h2 {
     color: var(--secondary-text-color);
     margin-top: 20px;
+    margin-bottom: 20px;
     font-size: 22px;
 }
 
@@ -32,19 +33,77 @@
     display: none;
 }
 
+.recovered-files-page .content-holder #recovered-files-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
 .recovered-files-page .content-holder #recovered-files-container .recovered-file {
     padding: 30px;
     background-color: var(--frame-bg-color);
-    border-radius: 20px;
-    margin-top: 30px;
-}
-
-.recovered-files-page .content-holder #recovered-files-container .recovered-file p {
-    margin-bottom: 30px;
+    border-radius: 15px;
+    width: 23%;
 }
 
 .recovered-files-page .content-holder #recovered-files-container .recovered-file .recovered-image {
-    width: 230px;
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    margin-bottom: 15px;
+
+    will-change: transform;
+    transform: translateZ(0);
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.recovered-files-page .content-holder #recovered-files-container .recovered-file .recovered-document {
+    width: 100%;
+    height: 130px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.recovered-files-page .content-holder #recovered-files-container .recovered-file .recovered-video {
+    width: 100%;
+    height: 130px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.recovered-files-page .content-holder #recovered-files-container .recovered-file .recovered-archive {
+    width: 100%;
+    height: 130px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.recovered-files-page .content-holder #recovered-files-container .recovered-file p {
+    margin-bottom: 15px;
+}
+
+.recovered-files-page .content-holder #recovered-files-container .recovered-file p:last-child {
+    margin-bottom: 0;
+}
+
+.recovered-files-page .content-holder #recovered-files-container .recovered-file .open-file-btn {
+    outline: none;
+    border: none;
+    background-color: var(--brand-blue-color);
+    color: var(--frame-bg-color);
+    border: 1px solid var(--brand-blue-color);
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.recovered-files-page .content-holder #recovered-files-container .recovered-file .open-file-btn:hover {
+    background-color: var(--frame-bg-color);
+    color: var(--brand-blue-color);
 }
 
 .recovered-files-page .content-holder .button-holder {
