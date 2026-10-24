@@ -15,17 +15,17 @@ export const generateBasicInfo = (
               <div class="hashes">
                 <div class="hash">
                   <h3>MD5</h3>
-                  <p>c7d7e2da731ffe666dbf50a547e23aed</p>
+                  <p>${data.hashes.file_hash_md5}</p>
                 </div>
 
                 <div class="hash">
                   <h3>SHA-256</h3>
-                  <p>e674774c89e4d056a332e26bc0b9d985382b809a60a5ca56e1e328f06ef5d665</p>
+                  <p>${data.hashes.file_hash_sha256}</p>
                 </div>
 
                 <div class="hash">
                   <h3>SHA-1</h3>
-                  <p>62c10099fea590dbc9ca02a6c357fc8f55983aac</p>
+                  <p>${data.hashes.file_hash_sha1}</p>
                 </div>
               </div>
 

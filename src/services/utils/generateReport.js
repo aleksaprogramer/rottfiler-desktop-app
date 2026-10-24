@@ -3,7 +3,7 @@ const path = require(`path`);
 
 const CHUNK_SIZE = 1024 * 1024;
 
-const genereateReport = (outputFile, dateId, filename) => {
+const genereateReport = (outputFile, dateId, filename, hashes) => {
 
     return new Promise((resolve, reject) => {
 
@@ -72,6 +72,7 @@ const genereateReport = (outputFile, dateId, filename) => {
                 processed_file: outputFile,
                 date_id: dateId,
                 filename: filename,
+                hashes: hashes,
                 total_size_of_empty_space_in_MB: parseFloat(totalBytesInMB),
                 bytes_statistic: {
                     total_bytes: totalBytes,
