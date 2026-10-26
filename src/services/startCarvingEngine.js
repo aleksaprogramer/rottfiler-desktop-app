@@ -1,27 +1,9 @@
 const { spawnSync } = require(`child_process`);
 const { spawn } = require(`child_process`);
+const fs = require(`fs`);
 const path = require(`path`);
 
-// const startCarvingEngine = (filepath, dateId, filename) => {
-//     const CARVER_EXE_PATH = path.join(process.cwd(), 'src', 'services', 'Carver.exe');
-//     const specifiedCaseFolder = path.join(process.cwd(), 'data', `case_${dateId}-${filename}`);
-
-//     console.log(`Starting deleted files carving on RAW file: ${filepath}`);
-//     console.log(`Results will be in folder: ${specifiedCaseFolder}`);
-
-//     const carver = spawnSync(CARVER_EXE_PATH, [filepath, specifiedCaseFolder]);
-
-//     if (carver.status === 0) {
-//         console.log(`C program successfully recovered deleted files and distributed them`);
-
-//     } else {
-//         console.log(`Error: ${carver.stderr.toString()}`);
-//     }
-// };
-
-
-
-const startCarvingEngine = (filepath, dateId, filename) => {
+const startCarvingEngine = async (filepath, dateId, filename) => {
     return new Promise((resolve, reject) => {
         const CARVER_EXE_PATH = path.join(process.cwd(), 'src', 'services', 'Carver.exe');
         const specifiedCaseFolder = path.join(process.cwd(), 'data', `case_${dateId}-${filename}`);
@@ -43,6 +25,17 @@ const startCarvingEngine = (filepath, dateId, filename) => {
         carverProces.on('close', (code) => {
             if (code === 0) {
                 console.log("C program successfully finished file carving");
+
+                fs.unlink(filepath, (err) => {
+                    
+                    if (err) {
+                        console.log(`Cannot delete the file ${filepath}`);
+                        return;
+                    }
+
+                    console.log(`File is successsfuly deleted`);
+                });
+
                 resolve();
             } else {
                 reject(new Error(`C program crashed with error: ${code}`));
