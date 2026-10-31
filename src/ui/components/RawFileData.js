@@ -39,9 +39,38 @@ class RawFileData {
         let filesHtml = ``;
 
         files.forEach((file) => {
+            const isImage = file.type === 'JPG' || file.type === 'PNG';
+            const isVideo = file.type === 'MP4';
+            const isPdf = file.type === 'PDF';
+            const isZip = file.type === 'ZIP';
+
             filesHtml += `
-            <p>Name: ${file.name}</p>
-            <p>Type: ${file.type}</p>
+            <div class="recovered-file" data-path="${file.filepath}">
+
+                ${isImage ? `<img src="${file.filepath}" alt="${file.name}" class="recovered-image" loading="lazy" decoding="async">` : ``}
+                
+                ${isVideo ? `
+                    <video width="230" controls class="recovered-video">
+                        <source src="${file.filepath}" type="video/mp4" />
+                        It is currently not possible to display this video.
+                    </video>
+                    ` : ``
+                }
+
+                ${isPdf ? `
+                    <img src="./src/assets/pdf.png" alt="PDF" class="recovered-document">
+                    ` : ``
+                }
+
+                ${isZip ? `
+                    <img src="./src/assets/zip.png" alt="ZIP" class="recovered-archive">
+                    ` : ``
+                }
+
+                <p>Name: ${file.name}</p>
+                <p>Type: ${file.type}</p>
+                <button class="open-file-btn">Open File</button>
+            </div>
             `;
         });
 
