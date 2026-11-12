@@ -44,5 +44,15 @@ contextBridge.exposeInMainWorld('electronAPI', {
   // SENDING FILEPATH TO main.js IN ORDER TO OPEN
   openFile: (filepath) => {
     ipcRenderer.send('open-file-with-system', filepath);
+  },
+
+  // SENDING FILEPATH TO main.js IN ORDER TO DISPLAY METADATA
+  displayMetadata: (filepath) => {
+    ipcRenderer.send('display-metedata-with-exiftool', filepath);
+  },
+
+  // SENDING METADATA TO renderer.js
+  onMetadata: (callback) => {
+    ipcRenderer.on('metadata', (e, data) => callback(data));
   }
 });

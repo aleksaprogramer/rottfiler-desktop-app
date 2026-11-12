@@ -4,6 +4,7 @@ const init = require(`./services/init.js`);
 const startCarvingEngine = require(`./services/startCarvingEngine.js`);
 const getRecoveredFiles = require(`./services/utils/getRecoveredFiles.js`);
 const getReportData = require(`./services/utils/getReportData.js`);
+const initExiftool = require(`./services/initExiftool.js`);
 
 // === SPLASH SCREEN ===
 let splashWin;
@@ -54,7 +55,7 @@ const createWindow = () => {
       win.setMenu(null);
       win.show();
       
-    }, 3000); // 5000
+    }, 5000); // 5000
   })
 
   return win;
@@ -122,5 +123,18 @@ app.whenReady().then(() => {
   // OPENING A FILE WITH OS
   ipcMain.on('open-file-with-system', (e, filepath) => {
     shell.openPath(filepath);
+  });
+
+  // DISPLAYING FILE METADATA
+  ipcMain.on('display-metedata-with-exiftool', async (e, filepath) => {
+    
+    try {
+      
+      const metadata = await initExiftool(filepath);
+      e.sender.send('metadata', metadata);
+
+    } catch (err) {
+      e.sender.send('metadata', { error: err.message });
+    }
   });
 });

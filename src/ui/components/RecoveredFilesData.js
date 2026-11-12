@@ -70,6 +70,7 @@ class RecoveredFilesData {
                 <p>Name: ${file.name}</p>
                 <p>Type: ${file.type}</p>
                 <button class="open-file-btn">Open File</button>
+                <button class="display-metadata-btn">Display Metadata</button>
             </div>
             `;
         });
@@ -145,6 +146,16 @@ class RecoveredFilesData {
                 }
 
                 window.electronAPI.openFile(filepath);
+            }
+
+            if (e.target.classList.contains(`display-metadata-btn`)) {
+                const filepath = clickedFile.dataset.path;
+
+                if (!filepath) {
+                    return;
+                }
+
+                window.electronAPI.displayMetadata(filepath);
             }
         });
     };

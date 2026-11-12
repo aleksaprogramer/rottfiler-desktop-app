@@ -70,6 +70,7 @@ class RawFileData {
                 <p>Name: ${file.name}</p>
                 <p>Type: ${file.type}</p>
                 <button class="open-file-btn">Open File</button>
+                <button class="display-metadata-btn">Display Metadata</button>
             </div>
             `;
         });

@@ -5,6 +5,7 @@ import FolderInputSection from "./ui/components/FolderInputSection.js";
 import RecoveredFilesData from "./ui/components/RecoveredFilesData.js";
 import RawFileData from "./ui/components/RawFileData.js";
 import BackButton from "./ui/components/BackButton.js";
+import MetadataModal from "./ui/components/MetadataModal.js";
 
 class App {
     
@@ -16,6 +17,7 @@ class App {
         this.folderInputSection = new FolderInputSection();
         this.recoveredFilesData = new RecoveredFilesData();
         this.backButton = new BackButton();
+        this.metadataModal = new MetadataModal();
     }
 };
 

@@ -1,0 +1,99 @@
+#metadata-modal {
+    display: none;
+}
+
+#metadata-modal.active {
+    display: block;
+    width: 700px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    border-radius: 20px;
+    background-color: var(--primary-bg-color);
+    cursor: default;
+    box-shadow: 
+        0 10px 25px -5px rgba(0, 0, 0, 0.5),
+        0 8px 10px -6px rgba(0, 0, 0, 0.4);
+}
+
+#metadata-modal .btn-holder {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#metadata-modal .btn-holder #close-modal-btn {
+    margin-top: 20px;
+    margin-right: 20px;
+    background-color: var(--brand-blue-color);
+    outline: none;
+    border: none;
+    border: 1px solid var(--brand-blue-color);
+    color: var(--primary-bg-color);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#metadata-modal .btn-holder #close-modal-btn:hover {
+    color: var(--brand-blue-color);
+    background-color: var(--primary-bg-color);
+}
+
+#metadata-modal .content-holder {
+    padding: 40px;
+    padding-top: 0;
+}
+
+#metadata-modal .content-holder h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#metadata-modal .content-holder #metadata-container {
+    overflow: auto;
+    height: 450px;
+}
+
+#metadata-modal .content-holder #metadata-container .metadata-table {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#metadata-modal .content-holder #metadata-container .metadata-table .metadata-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 10px;
+}
+
+#metadata-modal .content-holder #metadata-container .metadata-table .metadata-row .metadata-key {
+    font-weight: 600;
+}
+
+#metadata-modal .content-holder #metadata-container .metadata-table .metadata-row .metadata-value {
+    text-align: right;
+    width: 400px;
+}
+
+#overlay {
+    display: none;
+}
+
+#overlay.active {
+    display: block;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
